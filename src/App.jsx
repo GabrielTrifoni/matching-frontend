@@ -1,16 +1,9 @@
-import Header from './components/Header'
-import { UserProvider } from './components/UserContext'
-import { Outlet } from 'react-router-dom'
-import Footer from './components/Footer'
+import { Router } from './router/Router'
 
 function App() {
   return (
     <div style={{ height: '100vh' }}>
-      <UserProvider>
-        <Header />
-        <Outlet />
-        <Footer />
-      </UserProvider>
+      <Router />
     </div>
   )
 }

@@ -4,7 +4,7 @@ import "../styles/Projetos.css"
 import { ProgressBar, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export default function ProjConcDetails() {
+export default function ProjAndDetails() {
     const { id } = useParams()
     const item = data.find(item => item.id === parseInt(id));
 
