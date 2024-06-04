@@ -1,0 +1,88 @@
+.donation-container {
+    padding-bottom: 30px;
+}
+
+.donation-container h1 {
+    padding-top: 30px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.donation-main {
+    display: flex;
+    margin-inline: 90px;
+}
+
+.donation-proj {
+    flex: 1;
+    font-size: 20px;
+    text-align: justify;
+}
+
+.donation-proj h4 {
+    text-align: center;
+    font-weight: bold;
+}
+
+.donation-card {
+    background-color: #009FE0;
+    border-radius: 20px;
+    flex: 1;
+    margin-left: 30px;
+    margin-bottom: 60px;
+}
+
+.input-container {
+    height: 50px;
+    position: relative;
+    width: 100%;
+    margin-top: 30px;
+    padding-inline: 40px;
+}
+
+.input {
+    background-color: #009FE0;
+    border-width: 0 0 1px 0;
+    border-color: #000;
+    box-sizing: border-box;
+    color: #eee;
+    height: 100%;
+    outline: 0;
+    width: 100%;
+}
+
+.placeholder-form {
+    color: #fff;
+    left: 40px;
+    line-height: 14px;
+    position: absolute;
+    top: 20px;
+}
+
+.input:focus~.placeholder-form,
+.input:not(:placeholder-shown)~.placeholder-form {
+    display: none;
+}
+
+.donation-form-button {
+    all: unset;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    border: none;
+    background-color: #346786;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    transition: all 0.5s;
+    cursor: pointer;
+    letter-spacing: 1.2px;
+    float: right;
+    margin-right: 30px;
+}
+
+.donation-form-button:hover {
+    color: #000;
+    background: #fff;
+}

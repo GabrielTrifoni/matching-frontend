@@ -1,0 +1,18 @@
+*{
+  font-family: 'DM Sans';
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff;
+  margin: 0px;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,54 @@
+.extensao, .participar , .comunidade-ext{
+    padding: 60px;
+}
+
+.importancia , .aluno-unesp {
+    padding: 60px;
+    background-color: #009FE0;
+}
+
+
+.line {
+    height: 1px;
+    background-color: #333;
+    text-align: center;
+    margin: 30px;
+}
+
+.line span {
+    background-color: white;
+    position: relative;
+    top: -0.5em;
+    padding: 0 10px;
+    font-size: 30px;
+}
+
+.line-text {
+    text-align: justify;
+    font-size: 20px;
+    padding: 20px 60px;
+}
+
+.line-text-w-img {
+    text-align: justify;
+    font-size: 20px;
+    padding-top: 20px;
+}
+
+.line-text span {
+    display: inline-block;
+}
+
+.importancia span, .aluno-unesp span {
+    background-color: #009FE0;
+}
+
+.ext-content {
+    display: flex;
+}
+
+.ext-content img {
+    padding: 20px;
+    height: 300px;
+    width: 100%;
+}

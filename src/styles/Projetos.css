@@ -1,0 +1,115 @@
+.title {
+    margin-top: 30px;
+    padding-left: 100px;
+    font-weight: bold;
+}
+
+.container-projetos,
+.container-projetos-blue {
+    padding: 30px 60px 30px;
+}
+
+.container-projetos-blue {
+    background-color: #009FE0;
+}
+
+.projs {
+    display: flex;
+}
+
+.proj-img {
+    float: left;
+    height: 400px;
+    width: 600px;
+}
+
+.proj-descr {
+    flex: 1;
+    width: 300px;
+    margin-left: 20px;
+    font-size: 20px;
+    text-align: justify;
+}
+
+.news-text {
+    margin-inline: 100px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: justify;
+}
+
+.proj-title {
+    text-align: center;
+}
+
+.hashtags {
+    background-color: #bbceff;
+    border-radius: 20px;
+    margin-inline: 200px;
+    margin-block: 20px;
+    padding: 10px 0 10px;
+    display: flex;
+}
+
+.hashtag-item {
+    flex: 1;
+    text-align: center;
+}
+
+.hashtag-item span {
+    background-color: #52aff5;
+    border-radius: 20px;
+    color: #0075ff;
+}
+
+.proj-text {
+    margin-inline: 100px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.proj-donation {
+    margin-inline: 200px;
+    display: flex;
+}
+
+.proj-donation img {
+    flex: 1;
+}
+
+.proj-donation-descr {
+    padding-left: 20px;
+    text-align: justify;
+    flex: 1;
+}
+
+.donation {
+    padding-top: 50px;
+}
+
+.donation h4 {
+    margin: 0px;
+    padding-bottom: 10px;
+}   
+
+.donation-button {
+    all: unset;
+    display: block;
+    margin-left: auto;
+    margin-top: 20px;
+    border: 2px solid #fff;
+    background-color: #009FE0;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: 600;
+    transition: all 0.5s;
+    cursor: pointer;
+    letter-spacing: 1.2px;
+    float: left;
+}
+
+.donation-button:hover {
+    color: #000;
+    background: #346786;
+}
