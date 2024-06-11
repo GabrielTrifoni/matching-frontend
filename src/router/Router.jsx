@@ -18,6 +18,7 @@ import MeusProjetos from "../pages/MeusProjetos"
 import ProporProjeto from "../pages/ProporProjeto"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import CadastrarNoticia from "../pages/CadastrarNoticia"
 import { UserProvider } from "../components/UserContext"
 
 export const Router = () => {
@@ -52,6 +53,7 @@ export const Router = () => {
                     <Route path="/perfil" element={<Perfil />} />
                     <Route path="/meus-projetos" element={<MeusProjetos />} />
                     <Route path="/propor-projeto" element={<ProporProjeto />} />
+                    <Route path="/cadastrar-noticia" element={<CadastrarNoticia />} />
                 </Route>
             </Routes>
         </BrowserRouter>

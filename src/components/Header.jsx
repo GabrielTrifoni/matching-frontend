@@ -46,7 +46,7 @@ export default function Header() {
                     <NavDropdown title={user.nome} menuVariant='dark'>
                       <NavDropdown.Item as={Link} to="/perfil">Perfil</NavDropdown.Item>
                       <NavDropdown.Item as={Link} to="/meus-projetos">Meus projetos</NavDropdown.Item>
-                      <NavDropdown.Item as={Link} to="/projetos-em-andamento">Propor projeto</NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to="/propor-projeto">Propor projeto</NavDropdown.Item>
                       <NavDropdown.Item onClick={logout}>Sair</NavDropdown.Item>
                     </NavDropdown>
                   </>
