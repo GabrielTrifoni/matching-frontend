@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react'
 import '../styles/Login.css'
 import { Link, useNavigate } from 'react-router-dom'
-import { UserContext } from '../components/UserContext';
+import { useAuth } from '../contexts/AuthContext';
 import axios from 'axios';
 
 export default function Login() {
     const navigateTo = useNavigate();
-    const { login } = useContext(UserContext);
+    const { setToken } = useAuth()
     const [loginData, setLoginData] = useState({
         email: "",
         password: ""
@@ -20,8 +20,9 @@ export default function Login() {
             const response = await axios.post('http://localhost:3000/auth/login', loginData)
             if (response) {
                 setError("")
-                const { token } = response.data
-                localStorage.setItem("token", token)
+                const { access_token } = response.data
+                localStorage.setItem("token", access_token)
+                setToken(access_token)
                 navigateTo("/")
             } else {
                 setError("Email ou senha inválidos")

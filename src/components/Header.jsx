@@ -3,11 +3,17 @@ import '../styles/Header.css'
 import unespLogo from "../images/Logo_Unesp.svg"
 import { FaRegUser } from "react-icons/fa";
 import { Nav, Navbar, Container, NavDropdown } from 'react-bootstrap'
-import { Link } from 'react-router-dom';
-import { UserContext } from './UserContext';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthContext';
 
 export default function Header() {
-  const { user, logout } = useContext(UserContext);
+  const { user, logout } = useContext(AuthContext);
+  const navigateTo = useNavigate()
+
+  const handleLogout = () => {
+    logout()
+    navigateTo("/login")
+  }
 
   return (
     <Navbar expand="lg" id="header">
@@ -33,21 +39,21 @@ export default function Header() {
             <Nav.Link as={Link} to="/noticias">Notícias</Nav.Link>
             {user ? (
               <>
-                {user.role === 'ALUNO' ? (
+                {user.role === 'ESTUDANTE' ? (
                   <>
-                    <NavDropdown title={user.nome} menuVariant='dark'>
+                    <NavDropdown title={user.fullname.split(" ")[0]} menuVariant='dark'>
                       <NavDropdown.Item as={Link} to="/perfil">Perfil</NavDropdown.Item>
                       <NavDropdown.Item as={Link} to="/meus-projetos">Meus projetos</NavDropdown.Item>
-                      <NavDropdown.Item as={Link} to="/" onClick={logout}>Sair</NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to="/" onClick={handleLogout}>Sair</NavDropdown.Item>
                     </NavDropdown>
                   </>
                 ) : (
                   <>
-                    <NavDropdown title={user.nome} menuVariant='dark'>
+                    <NavDropdown title={user.fullname.split(" ")[0]} menuVariant='dark'>
                       <NavDropdown.Item as={Link} to="/perfil">Perfil</NavDropdown.Item>
                       <NavDropdown.Item as={Link} to="/meus-projetos">Meus projetos</NavDropdown.Item>
                       <NavDropdown.Item as={Link} to="/propor-projeto">Propor projeto</NavDropdown.Item>
-                      <NavDropdown.Item onClick={logout}>Sair</NavDropdown.Item>
+                      <NavDropdown.Item onClick={handleLogout}>Sair</NavDropdown.Item>
                     </NavDropdown>
                   </>
                 )}

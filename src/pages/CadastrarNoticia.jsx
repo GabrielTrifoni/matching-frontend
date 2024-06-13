@@ -43,40 +43,39 @@ export default function CadastrarNoticia() {
                     <Card style={{ maxWidth: "100%" }}>
                         <Card.Body>
                             <Card.Title>Preencha com as informações corretas</Card.Title>
-                            <Card.Text>
-                                <Form onSubmit={handleSubmit}>
-                                    <input
-                                        type="text"
-                                        name="title"
-                                        value={formState.title}
-                                        onChange={handleChange}
-                                        className="form-control"
-                                        placeholder="Título"
-                                    />
-                                    <br />
-                                    <textarea
-                                        type="text"
-                                        name="description"
-                                        value={formState.description}
-                                        onChange={handleChange}
-                                        className="form-control"
-                                        placeholder="Descrição"
-                                        rows={3}
-                                    />
-                                    <br />
-                                    <input
-                                        type="text"
-                                        name="attachments"
-                                        value={formState.attachments}
-                                        onChange={handleChange}
-                                        className="form-control"
-                                        placeholder="Url da imagem"
-                                    />
-                                    <br />
-                                    <button type="submit" className="btn btn-primary">Cadastrar</button>
-                                </Form>
-                                {message && <p style={{paddingTop: "10px"}}>{message}</p>}
-                            </Card.Text>
+
+                            <Form onSubmit={handleSubmit}>
+                                <input
+                                    type="text"
+                                    name="title"
+                                    value={formState.title}
+                                    onChange={handleChange}
+                                    className="form-control"
+                                    placeholder="Título"
+                                />
+                                <br />
+                                <textarea
+                                    type="text"
+                                    name="description"
+                                    value={formState.description}
+                                    onChange={handleChange}
+                                    className="form-control"
+                                    placeholder="Descrição"
+                                    rows={3}
+                                />
+                                <br />
+                                <input
+                                    type="text"
+                                    name="attachments"
+                                    value={formState.attachments}
+                                    onChange={handleChange}
+                                    className="form-control"
+                                    placeholder="Url da imagem"
+                                />
+                                <br />
+                                <button type="submit" className="btn btn-primary">Cadastrar</button>
+                            </Form>
+                            {message && <p style={{ paddingTop: "10px" }}>{message}</p>}
                         </Card.Body>
                     </Card>
                 </Container>

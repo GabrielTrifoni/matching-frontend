@@ -19,16 +19,16 @@ import ProporProjeto from "../pages/ProporProjeto"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import CadastrarNoticia from "../pages/CadastrarNoticia"
-import { UserProvider } from "../components/UserContext"
+import { AuthProvider } from "../contexts/AuthContext"
 
 export const Router = () => {
     const Layout = () => {
         return (
-            <UserProvider>
+            <AuthProvider>
                 <Header />
                 <Outlet />
                 <Footer />
-            </UserProvider>
+            </AuthProvider>
         )
     }
 

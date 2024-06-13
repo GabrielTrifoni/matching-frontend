@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { useUser } from "../components/UserContext"
+import { useAuth } from "../contexts/AuthContext"
 import { Container, Card, Form } from "react-bootstrap"
 
 export default function Perfil() {
