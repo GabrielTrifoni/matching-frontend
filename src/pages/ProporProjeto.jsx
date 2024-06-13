@@ -21,10 +21,10 @@ export default function ProporProjeto() {
     const [message, setMessage] = useState("")
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value, type } = e.target;
         setFormState(prevState => ({
             ...prevState,
-            [name]: value
+            [name]: type === "number" ? (value === "" ? "" : parseFloat(value)) : value
         }));
     };
 
@@ -53,7 +53,9 @@ export default function ProporProjeto() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
+        formState.subjects = selectedSubjects
+        console.log(formState)
+        console.log(selectedSubjects)
         try {
             const token = localStorage.getItem("token")
             await axios.post("http://localhost:3000/projects", formState, {
@@ -162,7 +164,7 @@ export default function ProporProjeto() {
                                     value={formState.supervisor}
                                     onChange={handleChange}
                                     className="form-control"
-                                    placeholder="Orientador"
+                                    placeholder="E-mail do orientador"
                                 />
                                 <br />
                                 <input
