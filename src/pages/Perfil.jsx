@@ -1,17 +1,32 @@
 import React, { useState, useEffect } from "react"
 import { useAuth } from "../contexts/AuthContext"
 import { Container, Card, Form } from "react-bootstrap"
+import axios from "axios"
 
 export default function Perfil() {
-    const { user, updateUser } = useUser()
-    const [formData, setFormData] = useState({ nome: '', email: '' })
+    const { user } = useAuth()
+    const [formData, setFormData] = useState({ fullname: '', email: '' })
+    const [subjectList, setSubjectList] = useState([])
 
     useEffect(() => {
         if (user) {
-            setFormData({ nome: user.nome, email: user.email });
+            setFormData({ fullname: user.fullname, email: user.email });
         }
     }, [user]);
 
+    useEffect(() => {
+        async function getSubjects() {
+            try {
+                const response = await axios.get("http://localhost:3000/subjects")
+                const { payload } = response.data
+                setSubjectList(payload)
+            } catch (error) {
+                console.error("Erro ao carregar interesses. ", error)
+            }
+        }
+
+        getSubjects()
+    }, [user])
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -25,20 +40,20 @@ export default function Perfil() {
                 <Container>
                     <Card style={{ maxWidth: "100%" }}>
                         <Card.Body>
-                            <Card.Text>
+                            <>
                                 <Form>
                                     <Form.Group>
                                         <label>Nome </label>
-                                        <input className="form-control" type="text" name="nome" value={formData.nome} onChange={handleChange} /> <br />
+                                        <input className="form-control" type="text" name="nome" value={formData.fullname} onChange={handleChange} /> <br />
                                     </Form.Group>
                                     <Form.Group>
                                         <label>E-mail </label>
                                         <input className="form-control" type="email" name="email" value={formData.email} onChange={handleChange} /> <br />
                                     </Form.Group>
-                                    <Form.Group style={{height: '86px'}}>
+                                    <Form.Group style={{ height: '86px' }}>
                                         <label>Curso </label>
                                         <select className="form-control">
-                                            <option selected>Selecione seu curso...</option>
+                                            <option>Selecione seu curso...</option>
                                             <option>Ciências da computação</option>
                                             <option>Engenharia ambiental</option>
                                             <option>Física</option>
@@ -47,28 +62,20 @@ export default function Perfil() {
                                             <option>Matemática</option>
                                         </select>
                                     </Form.Group>
-                                    <Form.Group style={{paddingBottom: '12px'}}>
+                                    <Form.Group style={{ paddingBottom: '12px' }}>
                                         <label>Áreas de interesse </label>
-                                        <Form.Check>
-                                            <input className="form-check-input" type="checkbox" />
-                                            <label className="form-check-label"> Desenvolvimento mobile</label>
-                                        </Form.Check>
-                                        <Form.Check>
-                                            <input className="form-check-input" type="checkbox" />
-                                            <label className="form-check-label"> Desenvolvimento web</label>
-                                        </Form.Check>
-                                        <Form.Check>
-                                            <input className="form-check-input" type="checkbox" />
-                                            <label className="form-check-label"> Design</label>
-                                        </Form.Check>
-                                        <Form.Check>
-                                            <input className="form-check-input" type="checkbox" />
-                                            <label className="form-check-label"> Análise de dados</label>
-                                        </Form.Check>
+                                        {subjectList.map(subject => (
+                                            <div key={subject.id}>
+                                                <Form.Check>
+                                                    <input className="form-check-input" type="checkbox" />
+                                                    <label className="form-check-label">{subject.subject}</label>
+                                                </Form.Check>
+                                            </div>
+                                        ))}
                                     </Form.Group>
                                     <button type="submit" className="btn btn-primary">Salvar</button>
                                 </Form>
-                            </Card.Text>
+                            </>
                         </Card.Body>
                     </Card>
                 </Container>
