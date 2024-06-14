@@ -10,7 +10,7 @@ export default function NoticiaDetails() {
             <div style={{ textAlign: "center", padding: "30px" }}>
                 <img src={item.img} alt="" style={{ height: "400px" }} />
             </div>
-            <div class="news-text">
+            <div className="news-text">
                 <strong>{item.title}</strong><br />
                 {item.description}
             </div>

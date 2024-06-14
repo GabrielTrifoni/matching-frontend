@@ -1,16 +1,99 @@
 .title {
     margin-top: 30px;
-    padding-left: 100px;
     font-weight: bold;
+}
+
+.project-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.project-card { 
+    max-width: 1300px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    border-radius: 7.5px;
+    border: 0.5px solid #f5f5f5;
+}
+
+.project-card-subjects {
+    display: flex;
+    gap: 1rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.project-card-subjects span {
+    color: #fff;
+    background-color: #000;
+    padding: 0.25rem;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.project-card-content h2 {
+    display: inline;
+    color: #fff;
+    background-color: #000;
+    padding-left: 0.5rem;
+    padding-right: 1.75rem;
+}
+
+.project-card:first-child {
+    margin-top: 1rem;
+}
+
+.project-card:last-child {
+    margin-bottom: 2rem;
+}
+
+.project-card-content {
+    padding: 1rem;
+}
+
+.project-card-content p {
+    margin-top: 1rem;
+}
+
+.project-card-metadata {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.project-card-metadata .metadata {
+    color: #fff;
+    background-color: #000;
+    padding: 0.25rem;
+    font-weight: bold;
+}   
+
+.project-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent !important;
+}
+
+.project-card-content .project-card-btn {
+    color: #000;
+    background: none;
+    padding: 0.5rem 2rem;
+    border: 1px solid #000;
+}   
+
+.project-card-content .project-card-btn:hover {
+    color: #fff;
+    background-color: #000;
+    transition: all 0.25s;
 }
 
 .container-projetos,
 .container-projetos-blue {
     padding: 30px 60px 30px;
-}
-
-.container-projetos-blue {
-    background-color: #009FE0;
 }
 
 .projs {
