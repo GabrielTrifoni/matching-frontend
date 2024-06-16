@@ -1,33 +1,46 @@
 import "../styles/Projetos.css"
-import data from "../data/projetos.json"
-import { Link } from "react-router-dom"
 import { Container } from "react-bootstrap"
+import { Project } from "../components/Project"
+import { Pagination } from "../components/Pagination"
+import { useEffect, useState } from "react"
+import axios from "axios"
 
 export default function ProjEmAndamento() {
+    const [projects, setProjects] = useState([])
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState([]);
+
+    useEffect(() => {
+        const fetchProjects = async () => {
+            try {
+                const response = await axios.get(`
+                    http://localhost:3000/projects?page=${currentPage}&size=5&status=in_progress`, 
+                )
+                
+                const { payload } = response.data;
+                currentPage === 1 && 
+                    setTotalPages(Array.from({ length: payload.totalPages }, (_v, i) => i + 1));
+                console.log(payload);
+                setProjects(payload.items);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
+        fetchProjects();
+    }, [currentPage])
+
+    console.log(projects);
+
+
     return (
         <>
             <Container>
                 <h1 className="title">Projetos em andamento</h1>
-            </Container>
-            {data.map(item => (
-                <div key={item.id} className={item.id % 2 == 0 ? "container-projetos-blue" : "container-projetos"}>
-                    <Container>
-                        <div className="projs">
-                            <div className="proj-img"><img className="proj-img" src={item.img} alt="" /></div>
-                            <div className="proj-descr">
-                                <h2>{item.title}</h2>
-                                {item.description}
-                            </div>
-                        </div>
-                        <button className="card-button">
-                            <Link to={`/projetos-em-andamento/${item.id}`}
-                                style={{ textDecoration: "none", color: "black" }}>
-                                Saiba Mais
-                            </Link>
-                        </button>
-                    </Container>
-                </div>
-            ))}
+            </Container>    
+            <Project projects={projects}/>
+            <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
         </>
     )
 }

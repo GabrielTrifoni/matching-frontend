@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { Container, Card } from "react-bootstrap"
 import axios from "axios"
 import { useAuth } from "../contexts/AuthContext"
