@@ -4,20 +4,34 @@ import { Container, Card, Form } from "react-bootstrap"
 import axios from "axios"
 
 export default function Perfil() {
-    const { user } = useAuth()
-    const [formData, setFormData] = useState({ fullname: '', email: '' })
+    const { user, token } = useAuth()
+    const [formData, setFormData] = useState({ fullname: '', email: '', interests: [] })
     const [subjectList, setSubjectList] = useState([])
+    const [newInterests, setNewInterests] = useState([])
 
     useEffect(() => {
         if (user) {
-            setFormData({ fullname: user.fullname, email: user.email });
+            setFormData({ 
+                fullname: user.fullname, 
+                email: user.email, 
+                phone: user.phone,
+                cpf: user.cpf,
+                bio: user.bio,
+                interests: user.subjects.map(subject => subject.subject.id) 
+            });
+            console.log(user)
         }
     }, [user]);
+
 
     useEffect(() => {
         async function getSubjects() {
             try {
-                const response = await axios.get("http://localhost:3000/subjects")
+                const response = await axios.get("http://localhost:3000/subjects", {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })
                 const { payload } = response.data
                 setSubjectList(payload)
             } catch (error) {
@@ -28,9 +42,35 @@ export default function Perfil() {
         getSubjects()
     }, [user])
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+    const handleCheckboxChange = (subjectId) => {
+        if (!formData.interests.includes(subjectId)) {
+            setNewInterests([...newInterests, subjectId]);
+        }
+
+        setFormData((prevState) => {
+            const newInterests = prevState.interests.includes(subjectId)
+                ? prevState.interests.filter(id => id !== subjectId)
+                : [...prevState.interests, subjectId];
+            return { ...prevState, interests: newInterests };
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post('http://localhost:3000/user/subjects', {
+                email: formData.email,
+                subjects: newInterests
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+
+            console.log("Dados atualizados com sucesso");
+        } catch (error) {
+            console.error("Erro ao atualizar perfil.", error);
+        }
     };
 
     return (
@@ -41,33 +81,73 @@ export default function Perfil() {
                     <Card style={{ maxWidth: "100%" }}>
                         <Card.Body>
                             <>
-                                <Form>
+                                <Form onSubmit={handleSubmit}>
                                     <Form.Group>
                                         <label>Nome </label>
-                                        <input className="form-control" type="text" name="nome" value={formData.fullname} onChange={handleChange} /> <br />
+                                        <input
+                                            className="form-control"
+                                            type="text"
+                                            name="nome"
+                                            value={formData.fullname}
+                                            readOnly
+                                        />
+                                        <br />
                                     </Form.Group>
                                     <Form.Group>
                                         <label>E-mail </label>
-                                        <input className="form-control" type="email" name="email" value={formData.email} onChange={handleChange} /> <br />
+                                        <input
+                                            className="form-control"
+                                            type="email"
+                                            name="email"
+                                            value={formData.email}
+                                            readOnly
+                                        />
+                                        <br />
                                     </Form.Group>
-                                    <Form.Group style={{ height: '86px' }}>
-                                        <label>Curso </label>
-                                        <select className="form-control">
-                                            <option>Selecione seu curso...</option>
-                                            <option>Ciências da computação</option>
-                                            <option>Engenharia ambiental</option>
-                                            <option>Física</option>
-                                            <option>Geografia</option>
-                                            <option>Geologia</option>
-                                            <option>Matemática</option>
-                                        </select>
+                                    <Form.Group>
+                                        <label>Telefone </label>
+                                        <input
+                                            className="form-control"
+                                            type="number"
+                                            name="telefone"
+                                            value={formData.phone}
+                                            readOnly
+                                        />
+                                        <br />
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <label>CPF </label>
+                                        <input
+                                            className="form-control"
+                                            type="number"
+                                            name="cpf"
+                                            value={formData.cpf}
+                                            readOnly
+                                        />
+                                        <br />
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <label>Bio </label>
+                                        <input
+                                            className="form-control"
+                                            type="text"
+                                            name="bio"
+                                            value={formData.bio}
+                                            readOnly
+                                        />
+                                        <br />
                                     </Form.Group>
                                     <Form.Group style={{ paddingBottom: '12px' }}>
                                         <label>Áreas de interesse </label>
                                         {subjectList.map(subject => (
                                             <div key={subject.id}>
                                                 <Form.Check>
-                                                    <input className="form-check-input" type="checkbox" />
+                                                    <input
+                                                        className="form-check-input"
+                                                        type="checkbox"
+                                                        checked={formData.interests.includes(subject.id)}
+                                                        onChange={() => handleCheckboxChange(subject.id)}
+                                                    />
                                                     <label className="form-check-label">{subject.subject}</label>
                                                 </Form.Check>
                                             </div>
