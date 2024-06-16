@@ -3,6 +3,7 @@ import { Container, Card } from "react-bootstrap"
 import axios from "axios"
 import { useAuth } from "../contexts/AuthContext"
 import Select from "react-select"
+import Interest from "../components/Interest"
 
 export default function MeusProjetos() {
     const { token, user } = useAuth()
@@ -87,6 +88,10 @@ export default function MeusProjetos() {
                                     <Card.Text><strong>Vagas: </strong>{project.slots}</Card.Text>
                                     <Card.Text><strong>Carga horária: </strong>{project.workload}h</Card.Text>
                                     <Card.Text><strong>Data de término: </strong>{project.endDate}</Card.Text>
+                                    <Card.Text>
+                                        <strong>Interessados </strong>
+                                        <Interest projectId={project.id} />
+                                    </Card.Text>
                                     <Card.Text>
                                         <strong>Status: </strong>
                                         {project.status === "DISAPPROVED" || project.status === "CONCLUDED" ? (
