@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { Container, Card, Form } from "react-bootstrap"
 import axios from "axios"
+import { useAuth } from "../contexts/AuthContext"
 
 export default function ProporProjeto() {
     const [formState, setFormState] = useState({
@@ -19,6 +20,7 @@ export default function ProporProjeto() {
     const [subjectList, setSubjectList] = useState([])
     const [selectedSubjects, setSelectedSubjects] = useState([])
     const [message, setMessage] = useState("")
+    const { token } = useAuth()
 
     const handleChange = (e) => {
         const { name, value, type } = e.target;
@@ -31,7 +33,11 @@ export default function ProporProjeto() {
     useEffect(() => {
         const fetchSubjects = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/subjects")
+                const response = await axios.get("http://localhost:3000/subjects", {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })
                 const { payload } = response.data
                 setSubjectList(payload)
             } catch (error) {

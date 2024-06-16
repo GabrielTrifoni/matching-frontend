@@ -31,7 +31,9 @@ export default function MeusProjetos() {
     const options = [
         { value: "UNDER_ANALYSIS", label: "Em análise" },
         { value: "APPROVED", label: "Aprovado" },
-        { value: "DISAPPROVED", label: "Reprovado" }
+        { value: "DISAPPROVED", label: "Reprovado" },
+        { value: "IN_PROGRESS", label: "Em andamento" },
+        { value: "CONCLUDED", label: "Concluído" }
     ]
 
     const handleStatusChange = (selectedOption, projectId) => {
@@ -44,7 +46,9 @@ export default function MeusProjetos() {
     const handleStatusUpdate = async (projectId, newStatus) => {
         const endpointMap = {
             "APPROVED": `http://localhost:3000/projects/${projectId}/approve`,
-            "DISAPPROVED": `http://localhost:3000/projects/${projectId}/disapprove`
+            "DISAPPROVED": `http://localhost:3000/projects/${projectId}/disapprove`,
+            "IN_PROGRESS": `http://localhost:3000/projects/${projectId}/start`,
+            "CONCLUDED": `http://localhost:3000/projects/${projectId}/conclude`
         };
 
         const endpoint = endpointMap[newStatus];
@@ -85,7 +89,9 @@ export default function MeusProjetos() {
                                     <Card.Text><strong>Data de término: </strong>{project.endDate}</Card.Text>
                                     <Card.Text>
                                         <strong>Status: </strong>
-                                        {project.status === "UNDER_ANALYSIS" ? (
+                                        {project.status === "DISAPPROVED" || project.status === "CONCLUDED" ? (
+                                            <span>{options.find(option => option.value === project.status).label}</span>
+                                        ) : (
                                             <>
                                                 <Select
                                                     value={options.find(option => option.value === (selectedStatus[project.id] || project.status))}
@@ -100,8 +106,6 @@ export default function MeusProjetos() {
                                                     Atualizar Status
                                                 </button>
                                             </>
-                                        ) : (
-                                            <span>{options.find(option => option.value === project.status).label}</span>
                                         )}
                                     </Card.Text>
                                 </Card.Body>
