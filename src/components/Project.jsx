@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+import { Link } from "react-router-dom";
+
 export function Project({ projects }) {
   return (
     <div className="project-container">
@@ -19,7 +22,9 @@ export function Project({ projects }) {
                         <span className="metadata">{project.slots} vagas</span>
                         <span className="metadata">~ {project.workload} horas</span>
                     </section>
-                    <button type="button" className="project-card-btn">Ver mais</button>  
+                    <Link to={`/projetos-em-andamento/${project.id}`}>
+                        <button type="button" className="project-card-btn">Ver mais</button>  
+                    </Link>
                 </footer>
             </section>
         </div>

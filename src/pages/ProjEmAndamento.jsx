@@ -31,7 +31,9 @@ export default function ProjEmAndamento() {
         fetchProjects();
     }, [currentPage])
 
-    console.log(projects);
+    useEffect(() => {
+        console.log(projects);
+    }, [projects])
 
 
     return (

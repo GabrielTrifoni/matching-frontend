@@ -32,7 +32,7 @@ export default function ProjAndDetails() {
             <Container>
 
             <div className="proj-title">
-                <h1 style={{ fontWeight: "bold" }}>Lorem Ipsum Dolor Sit Amet</h1>
+                <h1 style={{ fontWeight: "bold" }}>{project?.title}</h1>
                 {project?.isDonate ?
                     <div className="proj-donation">
                         <img src={project?.img} alt="" style={{ height: "350px", width: "600px" }} />
