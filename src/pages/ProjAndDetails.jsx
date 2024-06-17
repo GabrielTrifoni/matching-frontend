@@ -33,6 +33,7 @@ export default function ProjAndDetails() {
 
             <div className="proj-title">
                 <h1 style={{ fontWeight: "bold" }}>{project?.title}</h1>
+                {/* pegar valores doados de cada projeto */}
                 {project?.isDonate ?
                     <div className="proj-donation">
                         <img src={project?.img} alt="" style={{ height: "350px", width: "600px" }} />
@@ -71,9 +72,10 @@ export default function ProjAndDetails() {
 
                 <div className="proj-text-item">
                     <strong>Responsável(is)</strong>
-                    Nome do supervisor
+                    {project?.supervisor.fullname}
                 </div>
                 
+                {/* TODO: pegar nome das pessoas que preencheram vagas */}
                 <div className="proj-text-item">
                     <strong>Vagas ({project?.slots})</strong>
                     <ul>
