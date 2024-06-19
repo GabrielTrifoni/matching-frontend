@@ -33,7 +33,7 @@ export default function ProjConcluidos() {
     return (
         <>
             <Container>
-                <h1 className="title">Projetos Disponíveis</h1>
+                <h1 className="title">Projetos Concluídos</h1>
             </Container>    
             <Project projects={projects}/>
             <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
