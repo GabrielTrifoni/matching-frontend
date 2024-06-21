@@ -9,24 +9,40 @@ export default function MeusProjetos() {
     const { token, user } = useAuth()
     const [projectList, setProjectList] = useState([])
     const [selectedStatus, setSelectedStatus] = useState({})
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        const tweets_skeleton = document.querySelector(".tweets-skeleton");
+        const tweet_skeleton = document.querySelector(".tweet-skeleton");
+        for (let i = 0; i < 5; i++) {
+            tweets_skeleton?.append(tweet_skeleton.cloneNode(true));
+        }
+
         async function getProjects() {
             try {
-                const response = await axios.get("http://localhost:3000/projects/supervisor", {
+                let endpoint = "http://localhost:3000/projects/"
+                if (user.role === 'SUPERVISOR') {
+                    endpoint += 'supervisor'
+                } else if (user.role === 'STUDENT') {
+                    endpoint += 'student'
+                }
+
+                const response = await axios.get(endpoint, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
                 })
-
                 const { payload } = response.data
                 setProjectList(payload)
+                setIsLoading(false)
             } catch (error) {
                 console.error("Erro ao carregar projetos. ", error)
             }
         }
 
-        getProjects()
+        if (user && token) {
+            getProjects()
+        }
     }, [user, token])
 
     const options = [
@@ -76,49 +92,86 @@ export default function MeusProjetos() {
         <>
             <Container>
                 <h1>Meus projetos</h1>
-                {projectList.map(project => (
-                    <div key={project.id}>
-                        <Container>
-                            <Card style={{ maxWidth: "100%" }}>
-                                <Card.Body>
-                                    <Card.Title>{project.title}</Card.Title>
-                                    <Card.Text><strong>Motivação: </strong>{project.motivation}</Card.Text>
-                                    <Card.Text><strong>Descrição: </strong>{project.description}</Card.Text>
-                                    <Card.Text><strong>PAEG: </strong>{project.paeg}</Card.Text>
-                                    <Card.Text><strong>Vagas: </strong>{project.slots}</Card.Text>
-                                    <Card.Text><strong>Carga horária: </strong>{project.workload}h</Card.Text>
-                                    <Card.Text><strong>Data de término: </strong>{project.endDate}</Card.Text>
-                                    <Card.Text>
-                                        <strong>Interessados </strong>
-                                        <Interest projectId={project.id} />
-                                    </Card.Text>
-                                    <Card.Text>
-                                        <strong>Status: </strong>
-                                        {project.status === "DISAPPROVED" || project.status === "CONCLUDED" ? (
-                                            <span>{options.find(option => option.value === project.status).label}</span>
-                                        ) : (
-                                            <>
-                                                <Select
-                                                    value={options.find(option => option.value === (selectedStatus[project.id] || project.status))}
-                                                    options={options}
-                                                    onChange={(selectedOption) => handleStatusChange(selectedOption, project.id)}
-                                                />
-                                                <button
-                                                    className="btn btn-primary"
-                                                    onClick={() => handleStatusUpdate(project.id, selectedStatus[project.id])}
-                                                    disabled={!selectedStatus[project.id] || selectedStatus[project.id] === project.status}
-                                                >
-                                                    Atualizar Status
-                                                </button>
-                                            </>
-                                        )}
-                                    </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        </Container>
-                    </div>
-                ))}
+                {user.role === 'SUPERVISOR' ? (
+                    projectList.map(project => (
+                        <div key={project.id}>
+                            <Container>
+                                <Card style={{ maxWidth: "100%" }}>
+                                    <Card.Body>
+                                        <Card.Title>{project.title}</Card.Title>
+                                        <Card.Text><strong>Motivação: </strong>{project.motivation}</Card.Text>
+                                        <Card.Text><strong>Descrição: </strong>{project.description}</Card.Text>
+                                        <Card.Text><strong>PAEG: </strong>{project.paeg}</Card.Text>
+                                        <Card.Text><strong>Vagas: </strong>{project.slots}</Card.Text>
+                                        <Card.Text><strong>Carga horária: </strong>{project.workload}h</Card.Text>
+                                        <Card.Text><strong>Data de término: </strong>{project.endDate}</Card.Text>
+                                        <Card.Text>
+                                            <strong>Interessados </strong>
+                                            <Interest projectId={project.id} />
+                                        </Card.Text>
+                                        <Card.Text>
+                                            <strong>Status: </strong>
+                                            {project.status === "DISAPPROVED" || project.status === "CONCLUDED" ? (
+                                                <span>{options.find(option => option.value === project.status).label}</span>
+                                            ) : (
+                                                <>
+                                                    <Select
+                                                        value={options.find(option => option.value === (selectedStatus[project.id] || project.status))}
+                                                        options={options}
+                                                        onChange={(selectedOption) => handleStatusChange(selectedOption, project.id)}
+                                                    />
+                                                    <button
+                                                        className="btn btn-primary"
+                                                        onClick={() => handleStatusUpdate(project.id, selectedStatus[project.id])}
+                                                        disabled={!selectedStatus[project.id] || selectedStatus[project.id] === project.status}
+                                                    >
+                                                        Atualizar Status
+                                                    </button>
+                                                </>
+                                            )}
+                                        </Card.Text>
+                                    </Card.Body>
+                                </Card>
+                            </Container>
+                        </div>
+                    ))
+                ) : (
+                    projectList.map(project => (
+                        <div key={project.id}>
+                            <Container>
+                                <Card style={{ maxWidth: "100%" }}>
+                                    <Card.Body>
+                                        <Card.Title>{project.title}</Card.Title>
+                                        <Card.Text><strong>Motivação: </strong>{project.motivation}</Card.Text>
+                                        <Card.Text><strong>Descrição: </strong>{project.description}</Card.Text>
+                                        <Card.Text><strong>PAEG: </strong>{project.paeg}</Card.Text>
+                                        <Card.Text><strong>Vagas: </strong>{project.slots}</Card.Text>
+                                        <Card.Text><strong>Carga horária: </strong>{project.workload}h</Card.Text>
+                                        <Card.Text><strong>Data de término: </strong>{project.endDate}</Card.Text>
+                                    </Card.Body>
+                                </Card>
+                            </Container>
+                        </div>
+                    ))
+                )}
             </Container >
+            {
+                (isLoading) && 
+                // <div id="content-container">Carregando...</div>
+                <div className="tweets-skeleton">
+                    <div className="tweet-skeleton">
+                        <div className="content-1">
+                            <div className="line"></div>
+                            <div className="line"></div>
+                            <div className="line"></div>
+                        </div>
+                        <div className="content-2">
+                            <div className="line"></div>
+                            <div className="line"></div>
+                        </div>
+                    </div>
+                </div>
+            }
         </>
     )
 }
