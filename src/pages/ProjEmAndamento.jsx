@@ -10,8 +10,15 @@ export default function ProjEmAndamento() {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        const tweets_skeleton = document.querySelector(".tweets-skeleton");
+        const tweet_skeleton = document.querySelector(".tweet-skeleton");
+        for (let i = 0; i < 5; i++) {
+            tweets_skeleton?.append(tweet_skeleton.cloneNode(true));
+        }
+
         const fetchProjects = async () => {
             try {
                 const response = await axios.get(`
@@ -21,8 +28,8 @@ export default function ProjEmAndamento() {
                 const { payload } = response.data;
                 currentPage === 1 && 
                     setTotalPages(Array.from({ length: payload.totalPages }, (_v, i) => i + 1));
-                console.log(payload);
                 setProjects(payload.items);
+                setIsLoading(false);
             } catch (err) {
                 console.log(err);
             }
@@ -41,7 +48,28 @@ export default function ProjEmAndamento() {
             <Container>
                 <h1 className="title">Projetos em andamento</h1>
             </Container>    
-            <Project projects={projects}/>
+            {
+                (!isLoading) &&
+                <Project projects={projects}/>
+            }
+
+            {
+                (isLoading) && 
+                // <div id="content-container">Carregando...</div>
+                <div className="tweets-skeleton">
+                    <div className="tweet-skeleton">
+                        <div className="content-1">
+                            <div className="line"></div>
+                            <div className="line"></div>
+                            <div className="line"></div>
+                        </div>
+                        <div className="content-2">
+                            <div className="line"></div>
+                            <div className="line"></div>
+                        </div>
+                    </div>
+                </div>
+            }
             <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
         </>
     )
