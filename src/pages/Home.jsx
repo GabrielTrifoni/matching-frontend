@@ -141,7 +141,7 @@ export function Home() {
             <Container>
                 <div className="latest-news">
                     <div className="line">
-                        <span><strong>Últimas Notícias</strong></span>
+                        <span><strong>Últimas Divulgações</strong></span>
                     </div>
                     <div className="container-news">
                         <div className="news">

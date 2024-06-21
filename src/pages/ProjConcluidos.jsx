@@ -18,7 +18,6 @@ export default function ProjConcluidos() {
                 http://localhost:3000/projects?page=${currentPage}&size=3&status=concluded`)
                 
                 const { payload } = response.data;
-                console.log(payload);
                 currentPage === 1 && 
                     setTotalPages(Array.from({ length: payload.totalPages }, (_v, i) => i + 1));
                 setProjects(payload.items);

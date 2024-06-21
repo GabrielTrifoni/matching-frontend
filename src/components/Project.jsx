@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from "react"
+import { useState } from "react"
 import { Link } from "react-router-dom";
 import { Modal, Form, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
@@ -43,7 +43,9 @@ export function Project({ projects }) {
 
     return (
         <div className="project-container">
-            {projects && projects.map(project => (
+            {projects && projects.map(project => {
+                let path = (project.status == "CONCLUDED") ? "projetos-concluidos" : "projetos-em-andamento";
+                return (
                 <div className="project-card" key={project.id}>
                     <div className="project-card-subjects">
                         {project.subjects.map(({ subject }) => (
@@ -61,7 +63,7 @@ export function Project({ projects }) {
                                 <span className="metadata">{project.slots} vagas</span>
                                 <span className="metadata">~ {project.workload} horas</span>
                             </section>
-                            <Link to={`/projetos-em-andamento/${project.id}`}>
+                            <Link to={`/${path}/${project.id}`}>
                                 <button type="button" className="project-card-btn">Ver mais</button>
                             </Link>
                         </footer>
@@ -72,7 +74,7 @@ export function Project({ projects }) {
                         }
                         </section>
                 </div>
-            ))}
+            )})}
 
             <Modal show={showModal} onHide={handleCloseModal} className="custom-modal">
                 <Modal.Header closeButton>
