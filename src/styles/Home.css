@@ -16,8 +16,9 @@
 }
 
 .line span {
+    background-color: white;
     position: relative;
-    top: -0.5em;
+    top: -0.8em;
     padding: 0 10px;
     font-size: 30px;
 }
@@ -68,7 +69,7 @@
 .projetos-disponiveis, .projetos-concluidos {
     padding: 30px 60px 30px;
     background-color: #009FE0;
-    
+    min-height: 554px;
 }
 
 .projetos-em-andamento, .latest-news {
@@ -114,6 +115,12 @@
     flex: auto;
 }
 
+.projetos-grid {
+    display: grid;
+    grid-template-columns: repeat( 2, minmax(210px, 1fr) );
+    grid-template-rows: repeat( 2, minmax(180px, 1fr) );
+}
+
 .side-projects {
     flex-direction: row;
     margin: 15px;
@@ -129,7 +136,9 @@
 }
 
 .container-news {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2,minmax(300px, 1fr));
+    min-height: 344px;
 }
 
 .news {
