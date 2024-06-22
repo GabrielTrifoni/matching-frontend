@@ -12,16 +12,13 @@ export default function Extensao() {
                     </div>
                     <div className="line-text">
                         <span>
-                            Lorem ipsum dolor sit amet. Quo dignissimos eligendi et molestias corrupti et voluptates
-                            incidunt est ullam minus et sint galisum. Et expedita natus nam suscipit nesciunt aut
-                            nisi inventore et cumque placeat aut internos deserunt. Vel laboriosam praesentium Et
-                            ducimus velit At tenetur dicta eum doloremque doloribus et vero odit. Ut dolore omnis sit. Et
-                            dolorem autem ut nesciunt saepe!
-                            Cum molestiae praesentium id temporibus reiciendis qui ratione perferendis aut consequatur. Et
-                            tenetur? Aut corporis itaque non fuga reprehenderit eos obcaecati veniam aut fugiat maxime. Et
-                            aut sunt optio et provident eveniet sed corrupti dolorem. Et eaque dolore aut accusamus nulla. Et
-                            ut autem itaque qui dicta doloribus. Qui voluptatem deleniti eum reiciendis deleniti aut. Et
-                            consequatur quasi At dolores nihil in sunt omnis est saepe minima qui laborum voluptate.
+                            A extensão universitária da UNESP é uma ponte vital entre a academia e a comunidade,
+                            promovendo a troca de conhecimento e experiências. Esses projetos envolvem alunos,
+                            professores e a sociedade em atividades que visam o desenvolvimento social,
+                            cultural e econômico. Por meio de parcerias e ações práticas, a extensão fortalece o
+                            compromisso social da universidade, contribui para a formação cidadã dos estudantes e
+                            oferece soluções inovadoras para os desafios locais e regionais. Na UNESP, a extensão é
+                            uma ferramenta poderosa para transformar e enriquecer a realidade ao nosso redor.
                         </span>
                     </div>
                 </div>
@@ -34,16 +31,14 @@ export default function Extensao() {
                         </div>
                         <div className="line-text">
                             <span>
-                                Lorem ipsum dolor sit amet. Quo dignissimos eligendi et molestias corrupti et voluptates
-                                incidunt est ullam minus et sint galisum. Et expedita natus nam suscipit nesciunt aut
-                                nisi inventore et cumque placeat aut internos deserunt. Vel laboriosam praesentium Et
-                                ducimus velit At tenetur dicta eum doloremque doloribus et vero odit. Ut dolore omnis sit. Et
-                                dolorem autem ut nesciunt saepe!
-                                Cum molestiae praesentium id temporibus reiciendis qui ratione perferendis aut consequatur. Et
-                                tenetur? Aut corporis itaque non fuga reprehenderit eos obcaecati veniam aut fugiat maxime. Et
-                                aut sunt optio et provident eveniet sed corrupti dolorem. Et eaque dolore aut accusamus nulla. Et
-                                ut autem itaque qui dicta doloribus. Qui voluptatem deleniti eum reiciendis deleniti aut. Et
-                                consequatur quasi At dolores nihil in sunt omnis est saepe minima qui laborum voluptate.
+                                A importância da extensão universitária vai além da simples troca de conhecimentos
+                                entre a academia e a sociedade. Esses projetos desempenham um papel crucial na
+                                formação integral dos estudantes, permitindo que eles apliquem teorias em situações
+                                reais e adquiram competências práticas e sociais. Através da extensão, universidades
+                                podem colaborar diretamente com comunidades locais, enfrentando desafios específicos
+                                e promovendo o desenvolvimento sustentável. A extensão universitária é essencial
+                                para construir um elo sólido entre o conhecimento acadêmico e as demandas da sociedade,
+                                resultando em um impacto positivo e duradouro na vida de muitas pessoas.
                             </span>
                         </div>
                     </div>
@@ -56,21 +51,25 @@ export default function Extensao() {
                     </div>
                     <div className="line-text">
                         <span>
-                            Lorem ipsum dolor sit amet. Quo dignissimos eligendi et molestias corrupti et voluptates
-                            incidunt est ullam minus et sint galisum. Et expedita natus nam suscipit nesciunt aut
-                            nisi inventore et cumque placeat aut internos deserunt. Vel laboriosam praesentium Et
-                            ducimus velit At tenetur dicta eum doloremque doloribus et vero odit. Ut dolore omnis sit. Et
-                            dolorem autem ut nesciunt saepe!
-                            Cum molestiae praesentium id temporibus reiciendis qui ratione perferendis aut consequatur. Et
-                            tenetur? Aut corporis itaque non fuga reprehenderit eos obcaecati veniam aut fugiat maxime. Et
-                            aut sunt optio et provident eveniet sed corrupti dolorem. Et eaque dolore aut accusamus nulla. Et
-                            ut autem itaque qui dicta doloribus. Qui voluptatem deleniti eum reiciendis deleniti aut. Et
-                            consequatur quasi At dolores nihil in sunt omnis est saepe minima qui laborum voluptate.
+                            Para participar da extensão universitária, os alunos devem seguir alguns passos
+                            importantes. Primeiro, busque informações sobre os projetos disponíveis neste site 
+                            ou diretamente com departamentos e coordenadorias de extensão.
+                            <br/><br/>
+                            Participe de eventos e feiras de extensão para conhecer as oportunidades e conversar
+                            com coordenadores e alunos envolvidos. Consulte também professores e coordenadores de
+                            curso para orientações adicionais.
+                            <br/><br/>
+                            Identifique um projeto de interesse e inscreva-se. Comprometa-se com o projeto, dedicando 
+                            tempo e esforço às atividades.
+                            <br/><br/>
+                            Aproveite capacitações e treinamentos oferecidos pelos projetos e fique atento a
+                            editais e prazos de bolsas de extensão. Engaje-se na comunidade, contribuindo de forma
+                            significativa e respeitosa.
                         </span>
                     </div>
                 </div>
             </Container>
-            <div style={{ backgroundColor: "#009FE0" }}>
+            {/* <div style={{ backgroundColor: "#009FE0" }}>
                 <Container>
                     <div className="aluno-unesp">
                         <div className="line">
@@ -111,7 +110,7 @@ export default function Extensao() {
                         </span>
                     </div>
                 </div>
-            </Container>
+            </Container> */}
         </>
     )
 }
