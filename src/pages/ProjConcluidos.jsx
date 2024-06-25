@@ -12,6 +12,8 @@ export default function ProjConcluidos() {
     const [totalPages, setTotalPages] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    const [loading, setLoading] = useState(false);
+
     useEffect(() => {
         const tweets_skeleton = document.querySelector(".tweets-skeleton");
         const tweet_skeleton = document.querySelector(".tweet-skeleton");
@@ -21,14 +23,19 @@ export default function ProjConcluidos() {
 
         const fetchProjects = async () => {
             try {
+                setLoading(true)
                 const response = await axios.get(`
-                http://localhost:3000/projects?page=${currentPage}&size=3&status=concluded`)
+                http://localhost:3000/projects?page=${currentPage}&size=1&status=concluded`)
                 
                 const { payload } = response.data;
                 currentPage === 1 && 
                     setTotalPages(Array.from({ length: payload.totalPages }, (_v, i) => i + 1));
                 setProjects(payload.items);
+<<<<<<< Updated upstream
                 setIsLoading(false);
+=======
+                setLoading(false);
+>>>>>>> Stashed changes
             } catch (err) {
                 console.log(err);
             }
@@ -41,6 +48,7 @@ export default function ProjConcluidos() {
         <>
             <Container>
                 <h1 className="title">Projetos Concluídos</h1>
+<<<<<<< Updated upstream
             </Container>
             {
                 (!isLoading) &&
@@ -64,6 +72,10 @@ export default function ProjConcluidos() {
                     </div>
                 </div>
             }
+=======
+            </Container>    
+            {loading ? <span>Carregando...</span> : <Project projects={projects}/>}
+>>>>>>> Stashed changes
             <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
         </>
     )

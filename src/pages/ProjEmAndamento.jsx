@@ -12,6 +12,8 @@ export default function ProjEmAndamento() {
     const [totalPages, setTotalPages] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    const [loading, setLoading] = useState(false);
+
     useEffect(() => {
         const tweets_skeleton = document.querySelector(".tweets-skeleton");
         const tweet_skeleton = document.querySelector(".tweet-skeleton");
@@ -21,15 +23,20 @@ export default function ProjEmAndamento() {
 
         const fetchProjects = async () => {
             try {
+                setLoading(true);
                 const response = await axios.get(`
-                    http://localhost:3000/projects?page=${currentPage}&size=5&status=in_progress`, 
+                    http://localhost:3000/projects?page=${currentPage}&size=1&status=in_progress`, 
                 )
                 
                 const { payload } = response.data;
                 currentPage === 1 && 
                     setTotalPages(Array.from({ length: payload.totalPages }, (_v, i) => i + 1));
                 setProjects(payload.items);
+<<<<<<< Updated upstream
                 setIsLoading(false);
+=======
+                setLoading(false);
+>>>>>>> Stashed changes
             } catch (err) {
                 console.log(err);
             }
@@ -48,6 +55,7 @@ export default function ProjEmAndamento() {
             <Container>
                 <h1 className="title">Projetos em andamento</h1>
             </Container>    
+<<<<<<< Updated upstream
             {
                 (!isLoading) &&
                 <Project projects={projects}/>
@@ -70,6 +78,9 @@ export default function ProjEmAndamento() {
                     </div>
                 </div>
             }
+=======
+            {loading ? <div className="loading"><span>Carregando...</span></div> : <Project projects={projects}/>}
+>>>>>>> Stashed changes
             <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
         </>
     )

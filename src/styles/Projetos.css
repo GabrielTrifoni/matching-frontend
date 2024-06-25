@@ -160,6 +160,17 @@
     transition: all 0.25s;
 }
 
+.loading {
+    width: 1300px;
+    margin: 0 auto;
+    padding: 1rem 0;
+}
+
+.loading span {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
 .container-projetos,
 .container-projetos-blue {
     padding: 30px 60px 30px;
@@ -179,13 +190,6 @@
     flex: 1;
     width: 300px;
     margin-left: 20px;
-    font-size: 20px;
-    text-align: justify;
-}
-
-.news-text {
-    margin-inline: 100px;
-    margin-bottom: 20px;
     font-size: 20px;
     text-align: justify;
 }
@@ -273,7 +277,13 @@
     background: #346786;
 }
 
+<<<<<<< Updated upstream
 .custom-modal .modal-dialog{
     position: relative;
     top: 25%;
+=======
+.btn-decision {
+    display: flex;
+    gap: 1rem;
+>>>>>>> Stashed changes
 }
