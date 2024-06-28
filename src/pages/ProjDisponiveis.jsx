@@ -14,8 +14,6 @@ export default function ProjDisponiveis() {
     const [totalPages, setTotalPages] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    const [loading, setLoading] = useState(false);
-
     useEffect(() => {
         const tweets_skeleton = document.querySelector(".tweets-skeleton");
         const tweet_skeleton = document.querySelector(".tweet-skeleton");
@@ -23,11 +21,13 @@ export default function ProjDisponiveis() {
             tweets_skeleton?.append(tweet_skeleton.cloneNode(true));
         }
 
+        let response = null;
+
         const fetchProjects = async () => {
             try {
-                setLoading(false);
-                const response = await axios.get(`
-                http://localhost:3000/projects/byUser?page=${currentPage}&size=1&status=approved&slots=with_slot`,
+                setIsLoading(true);
+                response = await axios.get(`
+                http://localhost:3000/projects/byUser?page=${currentPage}&size=4&status=approved&slots=with_slot`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`
@@ -38,12 +38,12 @@ export default function ProjDisponiveis() {
                 currentPage === 1 &&
                     setTotalPages(Array.from({ length: payload.totalPages }, (_v, i) => i + 1));
                 setProjects(payload.items);
-<<<<<<< Updated upstream
                 setIsLoading(false);
-=======
-                setLoading(true);
->>>>>>> Stashed changes
             } catch (err) {
+                response = await axios.get(`http://localhost:3000/projects?page=${currentPage}&size=4&status=approved&slots=with_slot`)
+                const { payload } = response.data;
+                setProjects(payload.items)
+                setIsLoading(false);
                 console.log(err);
             }
         }
@@ -55,7 +55,7 @@ export default function ProjDisponiveis() {
         <>
             <Container>
                 <h1 className="title">Projetos Disponíveis</h1>
-<<<<<<< Updated upstream
+                {token === null && "(Sem filtro de usuário pois não está autenticado. )"}
             </Container>
             {
                 (!isLoading) &&
@@ -64,7 +64,6 @@ export default function ProjDisponiveis() {
 
             {
                 (isLoading) && 
-                // <div id="content-container">Carregando...</div>
                 <div className="tweets-skeleton">
                     <div className="tweet-skeleton">
                         <div className="content-1">
@@ -79,10 +78,6 @@ export default function ProjDisponiveis() {
                     </div>
                 </div>
             }
-=======
-            </Container>    
-            {loading ? <div className="loading"><span>Carregando...</span></div> : <Project projects={projects}/>}
->>>>>>> Stashed changes
             <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
         </>
     )

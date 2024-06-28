@@ -44,21 +44,25 @@ export default function ProjConcDetails() {
             const formattedEndDate = new Intl.DateTimeFormat('pt-BR').format(endDate);
             setActivityPeriod(formattedStartDate + ` - ` + formattedEndDate)
         }
+        setIsLoading(false);
     }, [project])
+
+    console.log(project)
 
     return (
         <>
             <Container>
                 <div className="proj-title">
-                    <h1 style={{ fontWeight: "bold" }}>{project?.title}</h1>
-                    <img alt="" style={{ height: "350px", width: "600px" }} />
+                    <h1 style={{ fontWeight: "bold", margin: "40px 0" }}>{project && project.title}</h1>
+                    <img src={project && project.attachment} alt="" style={{ height: "350px", width: "600px", marginBottom: "20px" }} />
                 </div>
                 <div className="hashtags">
-                    {(!isLoading) && subjects?.map((subject) => 
+                    {(!isLoading && subjects) && subjects.map((subject) => 
                         <div className="hashtag-item" key={subject}><span>#{subject}</span></div>
                     )}
 
-                    {(!isLoading && !subjects?.length) && "Não há itens relacionados a este projeto no momento."}
+                    {(!isLoading && subjects && !subjects.length) && "Não há itens relacionados a este projeto no momento."}
+                    
                 </div>
                 <div className="proj-text">
                 <div className="proj-text-item">
@@ -73,20 +77,22 @@ export default function ProjConcDetails() {
                 
                 <div className="proj-text-item">
                     <strong>Vagas ({project?.slots})</strong>
+                    {(!isLoading && token === null) && "Necessário estar logado para visualizar mais detalhes."}
                     <ul>
                         {
-                            (!isLoading) &&
-                            members?.map(member => {
+                            (!isLoading && members) &&
+                            members.map(member => {
                                 return (
                                     <li key={member.user.id}>{member.user.fullname}</li>
                                 )
                             })
                         }
                         {
-                            (project && members) && [...Array(project?.slots - members?.length)].map((_, index) => (
+                            (project && members) && [...Array(project.slots - members.length)].map((_, index) => (
                                 <li key={index}>Vaga aberta</li>
                             ))
                         }
+
                     </ul>
                 </div>
 
@@ -95,7 +101,7 @@ export default function ProjConcDetails() {
                     {activityPeriod}
                 </div>
 
-                <div className="proj-text-item">
+                <div className="proj-text-item" style={{marginBottom: "60px"}}>
                     <strong>Carga horária</strong>
                     {project?.workload} horas
                 </div>

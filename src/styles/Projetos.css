@@ -277,13 +277,7 @@
     background: #346786;
 }
 
-<<<<<<< Updated upstream
 .custom-modal .modal-dialog{
     position: relative;
     top: 25%;
-=======
-.btn-decision {
-    display: flex;
-    gap: 1rem;
->>>>>>> Stashed changes
 }
