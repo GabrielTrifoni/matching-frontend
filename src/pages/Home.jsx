@@ -84,8 +84,8 @@ export function Home() {
                                 ) : (
                                     <img src={randImg1} alt="" />
                                 )}
-                                <span><strong>{approvedProjects[0].title}</strong></span>
-                                <span>{approvedProjects[0].description}</span>
+                                <span className="content-section-title"><strong>{approvedProjects[0].title}</strong></span>
+                                <span className="content-section-desc">{approvedProjects[0].description}</span>
                             </div>
                             <div className="container2">
                                 <div className="projetos-grid">
@@ -98,7 +98,7 @@ export function Home() {
                                                 ) : (
                                                     <img src={randImg2} alt="" />
                                                 )}
-                                                <span><strong>{approvedProjects[1].title}</strong></span>
+                                                <span className="content-section-title"><strong>{approvedProjects[1].title}</strong></span>
                                             </>
                                         }
                                     </div>
@@ -112,7 +112,7 @@ export function Home() {
                                                 ) : (
                                                     <img src={randImg2} alt="" />
                                                 )}
-                                                <span><strong>{approvedProjects[2].title}</strong></span>
+                                                <span className="content-section-title"><strong>{approvedProjects[2].title}</strong></span>
                                             </>
                                         }
                                     </div>
@@ -126,7 +126,7 @@ export function Home() {
                                                 ) : (
                                                     <img src={randImg2} alt="" />
                                                 )}
-                                                <span><strong>{approvedProjects[3].title}</strong></span>
+                                                <span className="content-section-title"><strong>{approvedProjects[3].title}</strong></span>
                                             </>
                                         }
                                     </div>
@@ -140,7 +140,7 @@ export function Home() {
                                                 ) : (
                                                     <img src={randImg2} alt="" />
                                                 )}
-                                                <span><strong>{approvedProjects[4].title}</strong></span>
+                                                <span className="content-section-title"><strong>{approvedProjects[4].title}</strong></span>
                                             </>
                                         }
                                     </div>
@@ -169,8 +169,8 @@ export function Home() {
                                 ) : (
                                     <img src={randImg1} alt="" />
                                 )}
-                                <span><strong>{inProgressProjects[0].title}</strong></span>
-                                <span>{inProgressProjects[0].description}</span>
+                                <span className="content-section-title"><strong>{inProgressProjects[0].title}</strong></span>
+                                <span className="content-section-desc">{inProgressProjects[0].description}</span>
                             </div>
                             <div className="container2">
                                 <div className="projetos-grid">
@@ -183,7 +183,7 @@ export function Home() {
                                                 ) : (
                                                     <img src={randImg2} alt="" />
                                                 )}
-                                                <span><strong>{inProgressProjects[1].title}</strong></span>
+                                                <span className="content-section-title"><strong>{inProgressProjects[1].title}</strong></span>
                                             </>
                                         }
                                     </div>
@@ -197,7 +197,7 @@ export function Home() {
                                                 ) : (
                                                     <img src={randImg2} alt="" />
                                                 )}
-                                                <span><strong>{inProgressProjects[2].title}</strong></span>
+                                                <span className="content-section-title"><strong>{inProgressProjects[2].title}</strong></span>
                                             </>
                                         }
                                     </div>
@@ -211,7 +211,7 @@ export function Home() {
                                                 ) : (
                                                     <img src={randImg2} alt="" />
                                                 )}
-                                                <span><strong>{inProgressProjects[3].title}</strong></span>
+                                                <span className="content-section-title"><strong>{inProgressProjects[3].title}</strong></span>
                                             </>
                                         }
                                     </div>
@@ -225,7 +225,7 @@ export function Home() {
                                                 ) : (
                                                     <img src={randImg2} alt="" />
                                                 )}
-                                                <span><strong>{inProgressProjects[4].title}</strong></span>
+                                                <span className="content-section-title"><strong>{inProgressProjects[4].title}</strong></span>
                                             </>
                                         }
                                     </div>
@@ -254,8 +254,8 @@ export function Home() {
                                 ) : (
                                     <img src={randImg1} alt="" />
                                 )}
-                                <span><strong>{concludedProjects[0].title}</strong></span>
-                                <span>{concludedProjects[0].description}</span>
+                                <span className="content-section-title"><strong>{concludedProjects[0].title}</strong></span>
+                                <span className="content-section-desc">{concludedProjects[0].description}</span>
                             </div>
                             <div className="container1">
                                 <div className="projetos-grid">
@@ -268,7 +268,7 @@ export function Home() {
                                                 ) : (
                                                     <img src={randImg2} alt="" />
                                                 )}
-                                                <span><strong>{concludedProjects[1].title}</strong></span>
+                                                <span className="content-section-title"><strong>{concludedProjects[1].title}</strong></span>
                                             </>
                                         }
                                     </div>
@@ -282,7 +282,7 @@ export function Home() {
                                                 ) : (
                                                     <img src={randImg2} alt="" />
                                                 )}
-                                                <span><strong>{concludedProjects[2].title}</strong></span>
+                                                <span className="content-section-title"><strong>{concludedProjects[2].title}</strong></span>
                                             </>
                                         }
                                     </div>
@@ -296,7 +296,7 @@ export function Home() {
                                                 ) : (
                                                     <img src={randImg2} alt="" />
                                                 )}
-                                                <span><strong>{concludedProjects[3].title}</strong></span>
+                                                <span><strong className="content-section-title">{concludedProjects[3].title}</strong></span>
                                             </>
                                         }
                                     </div>
@@ -310,7 +310,7 @@ export function Home() {
                                                 ) : (
                                                     <img src={randImg2} alt="" />
                                                 )}
-                                                <span><strong>{concludedProjects[4].title}</strong></span>
+                                                <span><strong className="content-section-title">{concludedProjects[4].title}</strong></span>
                                             </>
                                         }
                                     </div>
@@ -343,8 +343,8 @@ export function Home() {
                                         ) : (
                                             <img src={randImg1} alt="" />
                                         )}
-                                        <span><strong>{news[0].title}</strong></span><br />
-                                        <span>{news[0].description}</span>
+                                        <span className="content-section-title"><strong>{news[0].title}</strong></span><br />
+                                        <span className="content-section-desc">{news[0].description}</span>
                                     </div>
                                 }
 
@@ -356,8 +356,8 @@ export function Home() {
                                         ) : (
                                             <img src={randImg1} alt="" />
                                         )}
-                                        <span><strong>{news[1].title}</strong></span><br />
-                                        <span style={{lineClamp: 6, textOverflow: "ellipsis", overflow: "hidden"}}>{news[1].description}</span>
+                                        <span className="content-section-title"><strong>{news[1].title}</strong></span><br />
+                                        <span className="content-section-desc">{news[1].description}</span>
                                     </div>
                                 }
                             </>
