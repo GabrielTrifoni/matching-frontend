@@ -90,7 +90,7 @@ export default function MeusProjetos() {
 
     return (
         <>
-            <Container>
+            <Container style={{padding: "40px 0"}}>
                 <h1>Meus projetos</h1>
                 {user.role === 'SUPERVISOR' ? (
                     projectList.map(project => (
