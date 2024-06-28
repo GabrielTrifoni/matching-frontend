@@ -31,6 +31,7 @@ export default function ProjAndDetails() {
                     }
                 }).then(result => {setMembers(result.data.payload); setIsLoading(false);})
             } catch(e) {
+                setIsLoading(false);
                 console.log(e);
             }
         }
@@ -48,16 +49,17 @@ export default function ProjAndDetails() {
         }
     }, [ project ]);
 
+    console.log(project?.attachment.url)
 
     return (
         <>
             <Container>
 
             <div className="proj-title">
-                <h1 style={{ fontWeight: "bold" }}>{project?.title}</h1>
+                <h1 style={{ fontWeight: "bold", margin: "40px 0"  }}>{project?.title}</h1>
                 {project?.isDonate ?
                     <div className="proj-donation">
-                        <img src={project?.img} alt="" style={{ height: "350px", width: "600px" }} />
+                        <img src={project && project.attachment.url} alt="" style={{ height: "350px", width: "600px" }} />
                         <div className="proj-donation-descr">
                             <h2>Faça uma doação!</h2>
                             Lorem ipsum dolor sit amet. Aut iure aliquid eos quis distinctio est tempore nostrum ut sint
@@ -76,20 +78,20 @@ export default function ProjAndDetails() {
                         </div>
                     </div>
                     :
-                    <img src={project?.img} alt="" style={{ height: "350px", width: "600px" }} />
+                    <img src={project?.attachment.url} alt="" style={{ height: "350px", width: "600px" }} />
                 }
             </div>
             {
 
             }
             <div className="hashtags">
-                {(!isLoading) && subjects?.map((subject) => 
+                {(!isLoading && subjects) && subjects.map((subject) => 
                     <div className="hashtag-item" key={subject}><span>#{subject}</span></div>
                 )}
 
-                {(!isLoading && !subjects?.length) && "Não há itens relacionados a este projeto no momento."}
+                {(!isLoading && subjects && !subjects.length) && <span style={{width: "100%",textAlign: "center"}}>Não há itens relacionados a este projeto no momento.</span>}
             </div>
-            <div className="proj-text">
+            <div className="proj-text" style={{marginBottom: "60px"}}>
                 <div className="proj-text-item">
                     <strong>Descrição e objetivos</strong>
                     {project?.description}
@@ -102,10 +104,11 @@ export default function ProjAndDetails() {
                 
                 <div className="proj-text-item">
                     <strong>Vagas ({project?.slots})</strong>
+                    {(!isLoading && token === null) && "Necessário estar logado para visualizar mais detalhes."}
                     <ul>
                     {
-                            (!isLoading) &&
-                            members?.map(member => {
+                            (!isLoading && members) &&
+                            members.map(member => {
                                 return (
                                     <li key={member.user.id}>{member.user.fullname}</li>
                                 )

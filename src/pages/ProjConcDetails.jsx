@@ -47,8 +47,6 @@ export default function ProjConcDetails() {
         setIsLoading(false);
     }, [project])
 
-    console.log(project)
-
     return (
         <>
             <Container>
@@ -77,7 +75,7 @@ export default function ProjConcDetails() {
                 
                 <div className="proj-text-item">
                     <strong>Vagas ({project?.slots})</strong>
-                    {(!isLoading && token === null) && "Necessário estar logado para visualizar mais detalhes."}
+                    {(!isLoading && subjects && !subjects.length) && <span style={{width: "100%",textAlign: "center"}}>Não há itens relacionados a este projeto no momento.</span>}
                     <ul>
                         {
                             (!isLoading && members) &&

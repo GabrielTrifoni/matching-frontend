@@ -357,7 +357,7 @@ export function Home() {
                                             <img src={randImg1} alt="" />
                                         )}
                                         <span><strong>{news[1].title}</strong></span><br />
-                                        <span>{news[1].description}</span>
+                                        <span style={{lineClamp: 6, textOverflow: "ellipsis", overflow: "hidden"}}>{news[1].description}</span>
                                     </div>
                                 }
                             </>
