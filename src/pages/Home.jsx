@@ -23,28 +23,32 @@ export function Home() {
             try {
                 // In progress Projects
                 axios.get(`http://localhost:3000/projects?page=1&size=5&status=approved`)
-                .then(response => setApprovedProjects(response.data.payload.items))
+                    .then(response => setApprovedProjects(response.data.payload.items))
 
                 // In progress Projects
                 axios.get(`http://localhost:3000/projects?page=1&size=5&status=in_progress`)
-                .then(response => setInProgressProjects(response.data.payload.items))
+                    .then(response => setInProgressProjects(response.data.payload.items))
 
                 // Concluded Projects
                 axios.get(`http://localhost:3000/projects?page=1&size=5&status=concluded`)
-                .then(response => setConcludedProjects(response.data.payload.items))
+                    .then(response => setConcludedProjects(response.data.payload.items))
 
                 // News
                 axios.get(`http://localhost:3000/news?page=1&size=2`)
-                .then(response => setNews(response.data.payload.items))
+                    .then(response => setNews(response.data.payload.items))
             } catch (err) {
                 console.log(err);
             }
         })
     }
-    
+
     return (
         <>
-            <ImageCarousel />
+            <ImageCarousel
+                approvedProject={approvedProjects ? approvedProjects[0] : null}
+                concludedProject={concludedProjects ? concludedProjects[0] : null}
+                newsItem={news ? news[0] : null}
+            />
             <Container>
                 <div className="extensao">
                     <div className="line">
@@ -52,11 +56,11 @@ export function Home() {
                     </div>
                     <div className="line-text">
                         <span>
-                        A extensão universitária da UNESP é uma ponte vital entre a academia e a comunidade, promovendo a troca de conhecimento 
-                        e experiências. Esses projetos envolvem alunos, professores e a sociedade em atividades que visam o desenvolvimento social, 
-                        cultural e econômico. Por meio de parcerias e ações práticas, a extensão fortalece o compromisso social da universidade, 
-                        contribui para a formação cidadã dos estudantes e oferece soluções inovadoras para os desafios locais e regionais. 
-                        Na UNESP, a extensão é uma ferramenta poderosa para transformar e enriquecer a realidade ao nosso redor.
+                            A extensão universitária da UNESP é uma ponte vital entre a academia e a comunidade, promovendo a troca de conhecimento
+                            e experiências. Esses projetos envolvem alunos, professores e a sociedade em atividades que visam o desenvolvimento social,
+                            cultural e econômico. Por meio de parcerias e ações práticas, a extensão fortalece o compromisso social da universidade,
+                            contribui para a formação cidadã dos estudantes e oferece soluções inovadoras para os desafios locais e regionais.
+                            Na UNESP, a extensão é uma ferramenta poderosa para transformar e enriquecer a realidade ao nosso redor.
                         </span>
                     </div>
                     <button className="card-button">
@@ -72,10 +76,14 @@ export function Home() {
                     <div className="line">
                         <span style={{ backgroundColor: "#009FE0" }}><strong>Projetos Disponíveis</strong></span>
                     </div>
-                    { (!isPending && approvedProjects) &&
+                    {(!isPending && approvedProjects) &&
                         <div className="projetos">
                             <div className="main-project">
-                                <img src={randImg1} alt="" />
+                                {approvedProjects[0].attachment && approvedProjects[0].attachment?.url ? (
+                                    <img src={approvedProjects[0].attachment.url} alt="" />
+                                ) : (
+                                    <img src={randImg1} alt="" />
+                                )}
                                 <span><strong>{approvedProjects[0].title}</strong></span>
                                 <span>{approvedProjects[0].description}</span>
                             </div>
@@ -85,7 +93,11 @@ export function Home() {
                                         {
                                             approvedProjects[1] &&
                                             <>
-                                                <img src={randImg2} alt="" />
+                                                {approvedProjects[1].attachment?.url ? (
+                                                    <img src={approvedProjects[1].attachment.url} alt="" />
+                                                ) : (
+                                                    <img src={randImg2} alt="" />
+                                                )}
                                                 <span><strong>{approvedProjects[1].title}</strong></span>
                                             </>
                                         }
@@ -95,7 +107,11 @@ export function Home() {
                                         {
                                             approvedProjects[2] &&
                                             <>
-                                                <img src={randImg2} alt="" />
+                                                {approvedProjects[2].attachment?.url ? (
+                                                    <img src={approvedProjects[2].attachment.url} alt="" />
+                                                ) : (
+                                                    <img src={randImg2} alt="" />
+                                                )}
                                                 <span><strong>{approvedProjects[2].title}</strong></span>
                                             </>
                                         }
@@ -105,7 +121,11 @@ export function Home() {
                                         {
                                             approvedProjects[3] &&
                                             <>
-                                                <img src={randImg2} alt="" />
+                                                {approvedProjects[3].attachment?.url ? (
+                                                    <img src={approvedProjects[3].attachment.url} alt="" />
+                                                ) : (
+                                                    <img src={randImg2} alt="" />
+                                                )}
                                                 <span><strong>{approvedProjects[3].title}</strong></span>
                                             </>
                                         }
@@ -115,7 +135,11 @@ export function Home() {
                                         {
                                             approvedProjects[4] &&
                                             <>
-                                                <img src={randImg2} alt="" />
+                                                {approvedProjects[4].attachment?.url ? (
+                                                    <img src={approvedProjects[4].attachment.url} alt="" />
+                                                ) : (
+                                                    <img src={randImg2} alt="" />
+                                                )}
                                                 <span><strong>{approvedProjects[4].title}</strong></span>
                                             </>
                                         }
@@ -137,10 +161,14 @@ export function Home() {
                     <div className="line">
                         <span><strong>Projetos Em Andamento</strong></span>
                     </div>
-                    { (!isPending && inProgressProjects) &&
+                    {(!isPending && inProgressProjects) &&
                         <div className="projetos">
                             <div className="main-project">
-                                <img src={randImg1} alt="" />
+                                {inProgressProjects[0].attachment && inProgressProjects[0].attachment?.url ? (
+                                    <img src={inProgressProjects[0].attachment.url} alt="" />
+                                ) : (
+                                    <img src={randImg1} alt="" />
+                                )}
                                 <span><strong>{inProgressProjects[0].title}</strong></span>
                                 <span>{inProgressProjects[0].description}</span>
                             </div>
@@ -150,7 +178,11 @@ export function Home() {
                                         {
                                             inProgressProjects[1] &&
                                             <>
-                                                <img src={randImg2} alt="" />
+                                                {inProgressProjects[1].attachment?.url ? (
+                                                    <img src={inProgressProjects[1].attachment.url} alt="" />
+                                                ) : (
+                                                    <img src={randImg2} alt="" />
+                                                )}
                                                 <span><strong>{inProgressProjects[1].title}</strong></span>
                                             </>
                                         }
@@ -160,7 +192,11 @@ export function Home() {
                                         {
                                             inProgressProjects[2] &&
                                             <>
-                                                <img src={randImg2} alt="" />
+                                                {inProgressProjects[2].attachment?.url ? (
+                                                    <img src={inProgressProjects[2].attachment.url} alt="" />
+                                                ) : (
+                                                    <img src={randImg2} alt="" />
+                                                )}
                                                 <span><strong>{inProgressProjects[2].title}</strong></span>
                                             </>
                                         }
@@ -170,7 +206,11 @@ export function Home() {
                                         {
                                             inProgressProjects[3] &&
                                             <>
-                                                <img src={randImg2} alt="" />
+                                                {inProgressProjects[3].attachment?.url ? (
+                                                    <img src={inProgressProjects[3].attachment.url} alt="" />
+                                                ) : (
+                                                    <img src={randImg2} alt="" />
+                                                )}
                                                 <span><strong>{inProgressProjects[3].title}</strong></span>
                                             </>
                                         }
@@ -180,7 +220,11 @@ export function Home() {
                                         {
                                             inProgressProjects[4] &&
                                             <>
-                                                <img src={randImg2} alt="" />
+                                                {inProgressProjects[4].attachment?.url ? (
+                                                    <img src={inProgressProjects[4].attachment.url} alt="" />
+                                                ) : (
+                                                    <img src={randImg2} alt="" />
+                                                )}
                                                 <span><strong>{inProgressProjects[4].title}</strong></span>
                                             </>
                                         }
@@ -202,10 +246,14 @@ export function Home() {
                     <div className="line">
                         <span style={{ backgroundColor: "#009FE0" }}><strong>Projetos Concluídos</strong></span>
                     </div>
-                    { (!isPending && concludedProjects) &&
+                    {(!isPending && concludedProjects) &&
                         <div className="projetos">
                             <div className="main-project">
-                                <img src={randImg1} alt="" />
+                                {concludedProjects[0].attachment && concludedProjects[0].attachment?.url ? (
+                                    <img src={concludedProjects[0].attachment.url} alt="" />
+                                ) : (
+                                    <img src={randImg1} alt="" />
+                                )}
                                 <span><strong>{concludedProjects[0].title}</strong></span>
                                 <span>{concludedProjects[0].description}</span>
                             </div>
@@ -215,7 +263,11 @@ export function Home() {
                                         {
                                             concludedProjects[1] &&
                                             <>
-                                                <img src={randImg2} alt="" />
+                                                {concludedProjects[1].attachment?.url ? (
+                                                    <img src={concludedProjects[1].attachment.url} alt="" />
+                                                ) : (
+                                                    <img src={randImg2} alt="" />
+                                                )}
                                                 <span><strong>{concludedProjects[1].title}</strong></span>
                                             </>
                                         }
@@ -225,7 +277,11 @@ export function Home() {
                                         {
                                             concludedProjects[2] &&
                                             <>
-                                                <img src={randImg2} alt="" />
+                                                {concludedProjects[2].attachment?.url ? (
+                                                    <img src={concludedProjects[2].attachment.url} alt="" />
+                                                ) : (
+                                                    <img src={randImg2} alt="" />
+                                                )}
                                                 <span><strong>{concludedProjects[2].title}</strong></span>
                                             </>
                                         }
@@ -235,7 +291,11 @@ export function Home() {
                                         {
                                             concludedProjects[3] &&
                                             <>
-                                                <img src={randImg2} alt="" />
+                                                {concludedProjects[3].attachment?.url ? (
+                                                    <img src={concludedProjects[3].attachment.url} alt="" />
+                                                ) : (
+                                                    <img src={randImg2} alt="" />
+                                                )}
                                                 <span><strong>{concludedProjects[3].title}</strong></span>
                                             </>
                                         }
@@ -245,7 +305,11 @@ export function Home() {
                                         {
                                             concludedProjects[4] &&
                                             <>
-                                                <img src={randImg2} alt="" />
+                                                {concludedProjects[4].attachment?.url ? (
+                                                    <img src={concludedProjects[4].attachment.url} alt="" />
+                                                ) : (
+                                                    <img src={randImg2} alt="" />
+                                                )}
                                                 <span><strong>{concludedProjects[4].title}</strong></span>
                                             </>
                                         }
@@ -270,11 +334,15 @@ export function Home() {
                     <div className="container-news">
                         {
                             (!isPending && news) &&
-                            <>                            
+                            <>
                                 {
                                     news[0] &&
                                     <div className="news">
-                                        <img src={randImg1} alt="" />
+                                        {news[0].attachment?.url ? (
+                                            <img src={news[0].attachment.url} alt="" />
+                                        ) : (
+                                            <img src={randImg1} alt="" />
+                                        )}
                                         <span><strong>{news[0].title}</strong></span><br />
                                         <span>{news[0].description}</span>
                                     </div>
@@ -283,7 +351,11 @@ export function Home() {
                                 {
                                     news[1] &&
                                     <div className="news">
-                                        <img src={randImg1} alt="" />
+                                        {news[1].attachment?.url ? (
+                                            <img src={news[1].attachment.url} alt="" />
+                                        ) : (
+                                            <img src={randImg1} alt="" />
+                                        )}
                                         <span><strong>{news[1].title}</strong></span><br />
                                         <span>{news[1].description}</span>
                                     </div>

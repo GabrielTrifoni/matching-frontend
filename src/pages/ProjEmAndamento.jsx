@@ -56,7 +56,6 @@ export default function ProjEmAndamento() {
 
             {
                 (isLoading) && 
-                // <div id="content-container">Carregando...</div>
                 <div className="tweets-skeleton">
                     <div className="tweet-skeleton">
                         <div className="content-1">

@@ -29,7 +29,11 @@ export default function ProjConcluidos() {
                 currentPage === 1 && 
                     setTotalPages(Array.from({ length: payload.totalPages }, (_v, i) => i + 1));
                 setProjects(payload.items);
+<<<<<<< HEAD
                 setIsLoading(false);
+=======
+                setLoading(false);
+>>>>>>> 940f4c354c9b335a98a0d03c69aa68c84eb0c9b8
             } catch (err) {
                 console.log(err);
             }
@@ -42,6 +46,7 @@ export default function ProjConcluidos() {
         <>
             <Container>
                 <h1 className="title">Projetos Concluídos</h1>
+<<<<<<< HEAD
             </Container>
             {
                 (!isLoading) &&
@@ -65,6 +70,10 @@ export default function ProjConcluidos() {
                     </div>
                 </div>
             }
+=======
+            </Container>    
+            {loading ? <span>Carregando...</span> : <Project projects={projects}/>}
+>>>>>>> 940f4c354c9b335a98a0d03c69aa68c84eb0c9b8
             <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
         </>
     )

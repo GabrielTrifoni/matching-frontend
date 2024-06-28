@@ -9,7 +9,7 @@ export default function ProporProjeto() {
         motivation: "",
         description: "",
         paeg: "",
-        attachments: "",
+        attachment: null,
         slots: "",
         workload: "",
         endDate: "",

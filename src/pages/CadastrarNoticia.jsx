@@ -1,39 +1,45 @@
-import React, { useState } from "react"
-import { Container, Card, Form } from "react-bootstrap"
-import axios from "axios"
+import React, { useState } from "react";
+import { Container, Card, Form } from "react-bootstrap";
+import axios from "axios";
 
 export default function CadastrarNoticia() {
-    const [message, setMessage] = useState("")
+    const [message, setMessage] = useState("");
     const [formState, setFormState] = useState({
         title: "",
         description: "",
-        attachments: ""
-    })
+        attachments: null
+    });
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value, files } = e.target;
         setFormState(prevState => ({
             ...prevState,
-            [name]: value
+            [name]: files ? files[0] : value
         }));
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append('title', formState.title);
+        formData.append('description', formState.description);
+        formData.append('attachments', formState.attachments);
 
         try {
-            const token = localStorage.getItem('token')
-            await axios.post('http://localhost:3000/news', formState, {
+            const token = localStorage.getItem('token');
+            await axios.post('http://localhost:3000/news', formData, {
                 headers: {
+                    'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${token}`
                 }
-            })
-            setMessage("Notícia cadastrada com sucesso!")
+            });
+            setMessage("Notícia cadastrada com sucesso!");
         } catch (error) {
-            setMessage("Erro ao cadastrar notícia.")
-            console.log("Erro ao cadastrar notícia. ", error)
+            setMessage("Erro ao cadastrar notícia.");
+            console.log("Erro ao cadastrar notícia. ", error);
         }
-    }
+    };
 
     return (
         <>
@@ -65,12 +71,10 @@ export default function CadastrarNoticia() {
                                 />
                                 <br />
                                 <input
-                                    type="text"
+                                    type="file"
                                     name="attachments"
-                                    value={formState.attachments}
                                     onChange={handleChange}
                                     className="form-control"
-                                    placeholder="Url da imagem"
                                 />
                                 <br />
                                 <button type="submit" className="btn btn-primary">Cadastrar</button>
@@ -81,5 +85,5 @@ export default function CadastrarNoticia() {
                 </Container>
             </Container>
         </>
-    )
+    );
 }

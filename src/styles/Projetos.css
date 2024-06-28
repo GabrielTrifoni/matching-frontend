@@ -277,7 +277,13 @@
     background: #346786;
 }
 
+<<<<<<< HEAD
 .custom-modal .modal-dialog{
     position: relative;
     top: 25%;
+=======
+.btn-decision {
+    display: flex;
+    gap: 1rem;
+>>>>>>> 940f4c354c9b335a98a0d03c69aa68c84eb0c9b8
 }

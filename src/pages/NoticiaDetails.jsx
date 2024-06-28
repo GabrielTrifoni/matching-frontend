@@ -8,7 +8,7 @@ export default function NoticiaDetails() {
     const { token } = useAuth();
     const [newsDetails, setNewsDetails] = useState({});
     const { id } = useParams()
-    
+
     useEffect(() => {
         async function fetchNewsDetails() {
             try {
@@ -30,24 +30,34 @@ export default function NoticiaDetails() {
 
     return (
         <>
-        <div style={{ textAlign: "center", padding: "30px" }}>
-            <img src={newsDetails.attachment.url} alt="" style={{ height: "400px" }} />
-        </div>
-        <div className="news-details">
-            <div className="news-details-inside">
-                <span>{newsDetails.user.fullname}</span>
-                <span>{newsDetails.user.email}</span>
+            <div style={{ textAlign: "center", padding: "30px" }}>
+                {newsDetails.attachment && newsDetails.attachment.url ? (
+                    <img src={newsDetails.attachment.url} alt="" style={{ height: "400px" }} />
+                ) : (
+                    <></>
+                )}
             </div>
+            <div className="news-details">
+                <div className="news-details-inside">
+                    {newsDetails.user ? (
+                        <>
+                            <span>{newsDetails.user.fullname}</span>
+                            <span>{newsDetails.user.email}</span>
+                        </>
+                    ) : (
+                        <></>
+                    )}
+                </div>
 
-            <div className="news-details-inside">
-                <span>{formatDate(newsDetails.writtenDate)}</span>
-                <span>{formatDate(newsDetails.modifiedDate)}</span>
+                <div className="news-details-inside">
+                    <span>{formatDate(newsDetails.writtenDate)}</span>
+                    <span>{formatDate(newsDetails.modifiedDate)}</span>
+                </div>
             </div>
-        </div>
-        <div className="news-text">
-            <strong>{newsDetails.title}</strong><br />
-            {newsDetails.description}
-        </div>
-    </>
+            <div className="news-text">
+                <strong>{newsDetails.title}</strong><br />
+                {newsDetails.description}
+            </div>
+        </>
     )
 }
