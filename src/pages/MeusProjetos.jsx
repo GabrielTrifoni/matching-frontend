@@ -98,7 +98,7 @@ export default function MeusProjetos() {
                             <Container style={{marginTop: "40px"}}>
                                 <Card style={{ maxWidth: "100%", marginBottom: "15px" }}>
                                     <Card.Body>
-                                        <Card.Title>{project.title}</Card.Title>
+                                        <Card.Title><strong>{project.title}</strong></Card.Title>
                                         <Card.Text><strong>Motivação: </strong>{project.motivation}</Card.Text>
                                         <Card.Text><strong>Descrição: </strong>{project.description}</Card.Text>
                                         <Card.Text><strong>PAEG: </strong>{project.paeg}</Card.Text>
