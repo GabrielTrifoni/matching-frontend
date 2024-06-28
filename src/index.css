@@ -16,3 +16,13 @@ html, body, #root {
   display: flex;
   flex-direction: column;
 }
+
+button.btn-primary, .interest-option {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+}

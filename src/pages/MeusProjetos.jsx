@@ -158,13 +158,17 @@ export default function MeusProjetos() {
             {
                 (isLoading) && 
                 <div className="tweets-skeleton">
-                    <div className="tweet-skeleton">
+                    <div className="tweet-skeleton" style={{height: "500px"}}>
                         <div className="content-1">
                             <div className="line"></div>
                             <div className="line"></div>
                             <div className="line"></div>
                         </div>
                         <div className="content-2">
+                            <div className="line"></div>
+                            <div className="line"></div>
+                            <div className="line"></div>
+                            <div className="line"></div>
                             <div className="line"></div>
                             <div className="line"></div>
                         </div>

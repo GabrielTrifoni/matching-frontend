@@ -59,6 +59,7 @@ export default function Interest({ projectId }) {
                                     variant="success"
                                     onClick={() => handleInterestApproval(item.id, true)}
                                     disabled={item.status === 'APROVADO' || item.status === 'REPROVADO'}
+                                    className="interest-option"
                                 >
                                     Aprovar
                                 </Button>
@@ -66,6 +67,7 @@ export default function Interest({ projectId }) {
                                     variant="danger"
                                     onClick={() => handleInterestApproval(item.id, false)}
                                     disabled={item.status === 'APROVADO' || item.status === 'REPROVADO'}
+                                    className="interest-option"
                                 >
                                     Reprovar
                                 </Button>
