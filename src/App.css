@@ -1,0 +1,9 @@
+button {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+}

@@ -95,8 +95,8 @@ export default function MeusProjetos() {
                 {user.role === 'SUPERVISOR' ? (
                     projectList.map(project => (
                         <div key={project.id}>
-                            <Container>
-                                <Card style={{ maxWidth: "100%" }}>
+                            <Container style={{marginTop: "40px"}}>
+                                <Card style={{ maxWidth: "100%", marginBottom: "15px" }}>
                                     <Card.Body>
                                         <Card.Title>{project.title}</Card.Title>
                                         <Card.Text><strong>Motivação: </strong>{project.motivation}</Card.Text>
@@ -157,7 +157,6 @@ export default function MeusProjetos() {
             </Container >
             {
                 (isLoading) && 
-                // <div id="content-container">Carregando...</div>
                 <div className="tweets-skeleton">
                     <div className="tweet-skeleton">
                         <div className="content-1">
