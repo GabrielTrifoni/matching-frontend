@@ -3,7 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import randImg from '../images/rand-img1.png';
 import { Container } from 'react-bootstrap';
 
-export default function ImageCarousel() {
+export default function ImageCarousel({ approvedProject, concludedProject, newsItem }) {
     const [index, setIndex] = useState(0);
 
     const handleSelect = (selectedIndex) => {
@@ -11,45 +11,49 @@ export default function ImageCarousel() {
     };
 
     return (
-        <Container style={{paddingTop: '30px'}}>
+        <Container style={{ paddingTop: '30px' }}>
             <Carousel>
-                <Carousel.Item>
-                    <img style={{ height: '70vh' }}
-                        className="d-block w-100"
-                        src={randImg}
-                        alt="First slide"
-                    />
-                    <Carousel.Caption>
-                        <h3>Lorem Ipsum</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img style={{ height: '70vh' }}
-                        className="d-block w-100"
-                        src={randImg}
-                        alt="Second slide"
-                    />
-
-                    <Carousel.Caption>
-                        <h3>Lorem Ipsum</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img style={{ height: '70vh' }}
-                        className="d-block w-100"
-                        src={randImg}
-                        alt="Third slide"
-                    />
-
-                    <Carousel.Caption>
-                        <h3>Lorem Ipsum</h3>
-                        <p>
-                            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                        </p>
-                    </Carousel.Caption>
-                </Carousel.Item>
+                {approvedProject && (
+                    <Carousel.Item>
+                        <img
+                            style={{ height: '70vh' }}
+                            className="d-block w-100"
+                            src={approvedProject.attachment?.url || 'randImg1'}
+                            alt="First slide"
+                        />
+                        <Carousel.Caption>
+                            <h3>{approvedProject.title}</h3>
+                            <p>{approvedProject.description}</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                )}
+                {concludedProject && (
+                    <Carousel.Item>
+                        <img
+                            style={{ height: '70vh' }}
+                            className="d-block w-100"
+                            src={concludedProject.attachment?.url || randImg }
+                            alt="Second slide"
+                        />
+                        <Carousel.Caption>
+                            <h3>{concludedProject.title}</h3>
+                            <p>{concludedProject.description}</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                )}
+                {newsItem && (
+                    <Carousel.Item>
+                        <img
+                            style={{ height: '70vh' }}
+                            className="d-block w-100"
+                            src={newsItem.attachment?.url || randImg}
+                            alt="Third slide"
+                        />
+                        <Carousel.Caption>
+                            <h3>{newsItem.title}</h3>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                )}
             </Carousel>
         </Container>
     );

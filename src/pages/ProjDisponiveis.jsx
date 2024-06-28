@@ -38,11 +38,7 @@ export default function ProjDisponiveis() {
                 currentPage === 1 &&
                     setTotalPages(Array.from({ length: payload.totalPages }, (_v, i) => i + 1));
                 setProjects(payload.items);
-<<<<<<< Updated upstream
-                setIsLoading(false);
-=======
                 setLoading(true);
->>>>>>> Stashed changes
             } catch (err) {
                 console.log(err);
             }
@@ -55,34 +51,8 @@ export default function ProjDisponiveis() {
         <>
             <Container>
                 <h1 className="title">Projetos Disponíveis</h1>
-<<<<<<< Updated upstream
-            </Container>
-            {
-                (!isLoading) &&
-                <Project projects={projects}/>
-            }
-
-            {
-                (isLoading) && 
-                // <div id="content-container">Carregando...</div>
-                <div className="tweets-skeleton">
-                    <div className="tweet-skeleton">
-                        <div className="content-1">
-                            <div className="line"></div>
-                            <div className="line"></div>
-                            <div className="line"></div>
-                        </div>
-                        <div className="content-2">
-                            <div className="line"></div>
-                            <div className="line"></div>
-                        </div>
-                    </div>
-                </div>
-            }
-=======
             </Container>    
             {loading ? <div className="loading"><span>Carregando...</span></div> : <Project projects={projects}/>}
->>>>>>> Stashed changes
             <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalPages={totalPages} />
         </>
     )

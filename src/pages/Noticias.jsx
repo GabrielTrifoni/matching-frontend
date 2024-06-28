@@ -26,7 +26,7 @@ export default function Noticias() {
                 })
                 const { payload } = response.data
                 console.log(payload)
-                currentPage === 1 && 
+                currentPage === 1 &&
                     setTotalPages(Array.from({ length: payload.totalPages }, (_v, i) => i + 1));
                 console.log(payload);
                 setNews(payload.items)
@@ -34,25 +34,29 @@ export default function Noticias() {
             } catch (err) {
                 console.log(err);
             }
-        } 
+        }
 
         fetchNews();
     }, [])
-    
+
     return (
         <>
             <div className="news-wrapper">
                 {loading && <span>Carregando...</span>}
                 {news && news.map(item => (
                     <div key={item.id} className="news-card">
-                        <img src={item.attachment.url} alt={item.attachment.fileName} />
+                        {item.attachment && item.attachment.url ? (
+                            <img src={item.attachment.url} alt={item.attachment.fileName} />
+                        ) : (
+                            <></>
+                        )}
                         <main>
                             <span>{formatDate(item.writtenDate)}</span>
                             <h3 className="news-card-title">{item.title}</h3>
                         </main>
                         <Link to={`/noticias/${item.id}`}>
                             <button className="news-card-button">
-                                    Saiba Mais
+                                Saiba Mais
                             </button>
                         </Link>
                     </div>
