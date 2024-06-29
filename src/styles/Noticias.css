@@ -1,3 +1,7 @@
+.news-page-title {
+    
+}
+
 .news-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -5,6 +9,7 @@
     max-width: 1360px;
     margin: 0 auto;
     gap: 1rem;
+    min-height: calc(57.9vh);
 }
 
 .news-card {

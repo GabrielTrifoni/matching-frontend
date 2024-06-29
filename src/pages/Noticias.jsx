@@ -41,9 +41,46 @@ export default function Noticias() {
 
     return (
         <>
+            <h1 className="news-page-title">Notícias</h1>
             <div className="news-wrapper">
-                {loading && <span>Carregando...</span>}
-                {news && news.map(item => (
+            {
+                (loading) && 
+                <div style={{display: "flex", flexDirection: "row", width: "100%"}}>
+                    <div className="tweet-skeleton" style={{height: "350px", width: "350px"}}>
+                        <div className="content-1">
+                            <div className="line"></div>
+                            <div className="line"></div>
+                            <div className="line"></div>
+                        </div>
+                        <div className="content-2">
+                            <div className="line"></div>
+                        </div>
+                    </div>
+
+                    <div className="tweet-skeleton" style={{height: "350px", width: "350px"}}>
+                        <div className="content-1">
+                            <div className="line"></div>
+                            <div className="line"></div>
+                            <div className="line"></div>
+                        </div>
+                        <div className="content-2">
+                            <div className="line"></div>
+                        </div>
+                    </div>
+
+                    <div className="tweet-skeleton" style={{height: "350px", width: "350px"}}>
+                        <div className="content-1">
+                            <div className="line"></div>
+                            <div className="line"></div>
+                            <div className="line"></div>
+                        </div>
+                        <div className="content-2">
+                            <div className="line"></div>
+                        </div>
+                    </div>
+                </div>
+            }
+                {!loading && news && news.map(item => (
                     <div key={item.id} className="news-card">
                         {item.attachment && item.attachment.url ? (
                             <img src={item.attachment.url} alt={item.attachment.fileName} />
