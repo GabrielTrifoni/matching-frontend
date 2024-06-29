@@ -25,7 +25,17 @@ export default function CadastrarNoticia() {
         formData.append('title', formState.title);
         formData.append('description', formState.description);
         formData.append('attachments', formState.attachments);
+        
+        // TODO: Fazer integração com o S3
 
+        const fileInput = document.getElementsByName('attachments')[0];
+        const file = fileInput.files[0];
+
+        // pegar url segura do nosso servidor
+
+        // upar a imagem diretamente no S3 Bucket
+
+        // Post Request para nosso servidor para armazenar qualquer outro dado
         try {
             const token = localStorage.getItem('token');
             await axios.post('http://localhost:3000/news', formData, {
