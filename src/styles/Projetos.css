@@ -1,0 +1,285 @@
+#content-container {
+    display: flex;
+    height: calc(100vh - 90px - 384px);
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    padding: 0 50px;
+}
+
+.tweets,
+.tweets-skeleton {
+  display: flex;
+  flex-flow: column wrap;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 0 3rem;
+}
+.tweets-skeleton {
+  margin-top: 2rem;
+}
+.tweet,
+.tweet-skeleton {
+  width: 70%;
+  margin: 0 1.5rem;
+}
+.tweet-skeleton {
+  border: 0.05rem solid rgb(190, 190, 190);
+  border-radius: 1rem;
+  height: 250px;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+}
+.tweet-skeleton .content-1,
+.tweet-skeleton .content-2 {
+  height: 35%;
+  margin-top: 1rem;
+}
+.tweet-skeleton .line {
+  height: 15%;
+  margin: 0.5rem 0;
+  width: 100%;
+  border-radius: 0.3rem;
+  background-color: rgb(209, 209, 209);
+  animation: tweet-skeleton 1s linear infinite alternate;
+}
+.tweet-skeleton .line:last-child {
+  width: 75%;
+}
+@keyframes tweet-skeleton {
+  0% {
+    background-color: rgb(209, 209, 209);
+  }
+  100% {
+    background-color: rgb(243, 243, 243);
+  }
+}
+
+
+
+
+
+
+
+.title {
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.project-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: 58.4vh;
+}
+
+.project-card {
+    width: 1300px;
+    max-width: 1480px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    border-radius: 7.5px;
+    border: 0.5px solid #f5f5f5;
+}
+
+.project-card-subjects {
+    display: flex;
+    gap: 1rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.project-card-subjects span {
+    color: #fff;
+    background-color: #4bbbe9;
+    font-weight: bold;
+    padding: 0.25rem;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.project-card-content h2 {
+    display: inline;
+    color: #000;
+    background-color: #EEEEEE;
+    font-weight: bold;
+    padding-left: 0.5rem;
+    padding-right: 1.75rem;
+}
+
+.project-card:first-child {
+    margin-top: 1rem;
+}
+
+.project-card:last-child {
+    margin-bottom: 2rem;
+}
+
+.project-card-content {
+    padding: 1rem;
+}
+
+.project-card-content p {
+    margin-top: 1rem;
+}
+
+.project-card-metadata {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.project-card-metadata .metadata {
+    color: #000;
+    background-color: #EEEEEE;
+    padding: 0.25rem;
+    font-weight: bold;
+}
+
+.project-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent !important;
+    gap: 2rem;
+}
+
+.project-card-content .project-card-btn {
+    color: #000;
+    background: none;
+    padding: 0.5rem 2rem;
+    border: 1px solid #272727;
+}
+
+.project-card-content .project-card-btn:hover {
+    color: #fff;
+    background-color: #4bbbe9;
+    border: 1px solid #4bbbe9;
+    transition: all 0.25s;
+}
+
+.loading {
+    width: 1300px;
+    margin: 0 auto;
+    padding: 1rem 0;
+}
+
+.loading span {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.container-projetos,
+.container-projetos-blue {
+    padding: 30px 60px 30px;
+}
+
+.projs {
+    display: flex;
+}
+
+.proj-img {
+    float: left;
+    height: 400px;
+    width: 600px;
+}
+
+.proj-descr {
+    flex: 1;
+    width: 300px;
+    margin-left: 20px;
+    font-size: 20px;
+    text-align: justify;
+}
+
+.proj-title {
+    text-align: center;
+}
+
+.hashtags {
+    background-color: #bbceff;
+    border-radius: 20px;
+    margin-inline: 200px;
+    margin-block: 20px;
+    padding: 10px 0 10px;
+    display: flex;
+}
+
+.hashtag-item {
+    flex: 1;
+    text-align: center;
+}
+
+.hashtag-item span {
+    background-color: #0091ff;
+    border-radius: 20px;
+    color: #000dc4;
+    padding: 2px 7px;
+}
+
+.proj-text {
+    margin-inline: 100px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.proj-text-item {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.proj-donation {
+    margin-inline: 200px;
+    display: flex;
+}
+
+.proj-donation img {
+    flex: 1;
+}
+
+.proj-donation-descr {
+    padding-left: 20px;
+    text-align: justify;
+    flex: 1;
+}
+
+.donation {
+    padding-top: 50px;
+}
+
+.donation h4 {
+    margin: 0px;
+    padding-bottom: 10px;
+}
+
+.donation-button {
+    all: unset;
+    display: block;
+    margin-left: auto;
+    margin-top: 20px;
+    border: 2px solid #fff;
+    background-color: #009FE0;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: 600;
+    transition: all 0.5s;
+    cursor: pointer;
+    letter-spacing: 1.2px;
+    float: left;
+}
+
+.donation-button:hover {
+    color: #000;
+    background: #346786;
+}
+
+.custom-modal .modal-dialog{
+    position: relative;
+    top: 25%;
+}

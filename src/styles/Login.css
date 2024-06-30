@@ -1,0 +1,102 @@
+.login-container {
+    display: flex;
+    margin-inline: 450px;
+    margin-block: 100px;
+}
+
+.login-card {
+    flex: 1;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+}
+
+.login-card h3 {
+    padding-left: 40px;
+    margin-top: 18.720px;
+    margin-bottom: 18.720px;
+}
+
+.button-container {
+    margin-top: 30px;
+    margin-inline: 40px;
+}
+
+.login-button,
+.cadastrar-button {
+    all: unset;
+    border: none;
+    background-color: #009FE0;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.5s;
+    cursor: pointer;
+    letter-spacing: 1.2px;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+}
+
+.signup-button,
+.forgotpassword-button {
+    all: unset;
+    border: none;
+    background-color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.5s;
+    cursor: pointer;
+    letter-spacing: 1.2px;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    color: #009FE0;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+}
+
+.forgotpassword-button,
+.cadastrar-button {
+    margin-bottom: 30px;
+}
+
+.login-button:hover,
+.cadastrar-button:hover {
+    background: #346786;
+}
+
+.signup-button:hover,
+.forgotpassword-button:hover {
+    background: #d3d3d3;
+}
+
+.input-login {
+    border-width: 0 0 1px 0;
+    border-color: #000;
+    box-sizing: border-box;
+    color: #000;
+    height: 100%;
+    outline: 0;
+    width: 100%;
+}
+
+.input-container {
+    height: 50px;
+    position: relative;
+    width: 100%;
+    margin-top: 30px;
+    padding-inline: 40px;
+}
+
+.placeholder-login {
+    color: #000;
+    left: 40px;
+    line-height: 14px;
+    position: absolute;
+    top: 20px;
+}
+
+.input-login:focus~.placeholder-login,
+.input-login:not(:placeholder-shown)~.placeholder-login {
+    display: none;
+}

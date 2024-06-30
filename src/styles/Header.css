@@ -1,0 +1,69 @@
+@media screen and (min-width: 1024px) {
+    :root {
+      --normal-font-size: 1rem;
+    }
+}
+
+#header {
+  padding: 15px 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 9999;
+  background: #346786;
+  box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s linear;
+}
+
+#header .navbar {
+  padding: 0;
+  justify-content: space-between;
+  background: none !important;
+}
+
+#header .navbar-collapse {
+  flex-grow: 0;
+}
+
+#header .navbar-collapse .navbar-nav {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+#header .navbar-collapse a:last-child {
+  padding-right: 0;
+}
+
+#header .navbar-collapse a {
+  color: #fff;
+  position: relative;
+}
+
+#header .navbar-collapse a:hover,
+#header .navbar-collapse a.active {
+  background: none;
+  color: #000;
+}
+
+#header .navbar-collapse a:hover:before,
+#header .navbar-collapse a.active:before {
+  right: 7px;
+  left: 8px;
+  opacity: 1;
+}
+  
+.nav-logo {
+    display: inline-flex;
+    align-items: center;
+    column-gap: .25rem;
+}
+  
+.nav-logo img {
+    height: 50px;
+    width: 100%;
+}
+
+#header {
+  position: sticky;
+}

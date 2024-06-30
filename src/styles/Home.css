@@ -1,0 +1,167 @@
+.extensao, .participar , .comunidade-ext{
+    padding: 60px;
+}
+
+.importancia , .aluno-unesp {
+    padding: 60px;
+    background-color: #009FE0;
+}
+
+
+.line {
+    height: 1px;
+    background-color: #333;
+    text-align: center;
+    margin: 30px;
+}
+
+.line span {
+    background-color: white;
+    position: relative;
+    top: -0.8em;
+    padding: 0 10px;
+    font-size: 30px;
+}
+
+.line-text {
+    text-align: justify;
+    font-size: 20px;
+    padding: 20px 60px;
+}
+
+.line-text span {
+    display: inline-block;
+}
+
+.importancia span, .aluno-unesp span {
+    background-color: #009FE0;
+}
+
+.ext-content {
+    display: flex;
+}
+
+.ext-content img {
+    padding: 20px 60px;
+    height: 300px;
+    width: 100%;
+}
+
+.card-button{
+	all: unset;
+	display: block;
+	margin-left: auto;
+	border: none;
+    background-color: #346786;
+	padding: 10px 15px;
+	border-radius: 25px;
+	font-size: 10px;
+	font-weight: 600;
+	transition: all 0.5s;
+	cursor: pointer;
+	letter-spacing: 1.2px;
+}
+.card-button:hover {
+    color:#000;
+    background: #3d96ce;
+}
+
+.projetos-disponiveis, .projetos-concluidos {
+    padding: 30px 60px 30px;
+    background-color: #009FE0;
+    min-height: 554px;
+}
+
+.projetos-em-andamento, .latest-news {
+    padding: 30px 60px 30px;
+}
+
+.projetos-disponiveis span, .projetos-concluidos span {
+    background-color: #009FE0;
+}
+
+.projetos {
+    display: flex;
+    margin: 30px;
+    gap: 70px;
+}
+
+.main-project {
+    flex: auto;
+    font-size: 16px;
+    margin: 15px;
+}
+
+.main-project2 {
+    font-size: 16px;
+    margin: 15px;
+}
+
+.main-project img, .main-project2 img {
+    height: 350px;
+    width: 560px;
+}
+
+.main-project span, .main-project2 span {
+    display: block;
+    width: 490px;
+}
+
+.container1 {
+    display: flex;
+}
+
+.container2 {
+    display: flex;
+    flex: auto;
+}
+
+.projetos-grid {
+    display: grid;
+    grid-template-columns: repeat( 2, minmax(210px, 1fr) );
+    grid-template-rows: repeat( 2, minmax(180px, 1fr) );
+}
+
+.side-projects {
+    flex-direction: row;
+    margin: 15px;
+}
+
+.side-projects img {
+    height: 140px;
+    width: 210px;
+}
+
+.side-projects span {
+    display: block;
+}
+
+.container-news {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(300px, 1fr));
+    min-height: 344px;
+}
+
+.news {
+    flex: 1;
+    padding: 20px;
+}
+
+.news img {
+    height: 200px;
+    width: 100%;
+}
+
+.content-section-title {
+    font-size: 17.5px;
+}
+
+.content-section-desc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    margin-top: 11px;
+    text-align: justify;
+}
