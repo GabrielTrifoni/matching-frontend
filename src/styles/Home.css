@@ -83,6 +83,7 @@
 .projetos {
     display: flex;
     margin: 30px;
+    gap: 70px;
 }
 
 .main-project {
