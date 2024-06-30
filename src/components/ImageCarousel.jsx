@@ -29,8 +29,8 @@ export default function ImageCarousel({
             />
             <Carousel.Caption>
                 <div className="carousel-custom-caption">      
-                    <h3>{approvedProject.title}</h3>
-                    <p>{approvedProject.description}</p>
+                    <h3>{approvedProject?.title}</h3>
+                    <p>{approvedProject?.description}</p>
                 </div>
             </Carousel.Caption>
           </Carousel.Item>
@@ -45,8 +45,8 @@ export default function ImageCarousel({
             />
             <Carousel.Caption>
                 <div className="carousel-custom-caption">      
-                    <h3>{approvedProject.title}</h3>
-                    <p>{approvedProject.description}</p>
+                    <h3>{approvedProject?.title}</h3>
+                    <p>{approvedProject?.description}</p>
                 </div>
             </Carousel.Caption>
           </Carousel.Item>
@@ -61,8 +61,8 @@ export default function ImageCarousel({
             />
             <Carousel.Caption>
                 <div className="carousel-custom-caption">      
-                    <h3>{approvedProject.title}</h3>
-                    <p>{approvedProject.description}</p>
+                    <h3>{approvedProject?.title}</h3>
+                    <p>{approvedProject?.description}</p>
                 </div>
             </Carousel.Caption>
           </Carousel.Item>
